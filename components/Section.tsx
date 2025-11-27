@@ -29,6 +29,7 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, imageSrc, imageAlt
                                     alt={imageAlt}
                                     fill
                                     className="object-cover"
+                                    unoptimized
                                 />
                             ) : (
                                 <span>Image Placeholder</span>
@@ -39,7 +40,7 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, imageSrc, imageAlt
 
                 {/* Content Container */}
                 <div className="flex-1 w-full flex flex-col gap-6 text-center md:text-left">
-                    <h2 className="text-4xl font-bold text-black dark:text-white">{headline}</h2>
+                    <h2 className="text-4xl font-bold text-black dark:text-white font-heading">{headline}</h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300">{subtext}</p>
                 </div>
 
