@@ -25,6 +25,9 @@ export default function Home() {
             onButtonClick={handleHeroClick}
           />
 
+          {/* Empty spacer for scroll animation */}
+          <div className="h-[100vh] w-full" />
+
           <Section
             headline="Elegant Design"
             subtext="Our design philosophy centers on simplicity and functionality. Every pixel is crafted with purpose to ensure a seamless user experience."
