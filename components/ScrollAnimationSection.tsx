@@ -47,21 +47,39 @@ const ScrollAnimationSection = () => {
                 "<"
             );
 
+            tl.fromTo(
+                sharedContainerRef.current,
+                { y: "30%" },
+                { y: "0%", duration: 1, ease: "power2.out" },
+                "<"
+            );
+
             // Horizontal movement after initial animation (Duration: 1 -> 100-200vh)
             tl.to(
                 sharedContainerRef.current,
-                { x: "-55%", y: "-25%", duration: 1, ease: "none" },
+                { x: "-55%", duration: 1, ease: "none" },
                 ">"
             );
+            // Fade out as the section scrolls out of view
+            gsap.to(sharedContainerRef.current, {
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "bottom bottom",
+                    end: "bottom 50%",
+                    scrub: true,
+                },
+                opacity: 0,
+                ease: "none",
+            });
         },
         { scope: containerRef }
     );
 
     return (
         <div ref={containerRef} className="relative w-full h-[300vh] z-10">
-            <div className="sticky top-0 h-screen w-full flex items-end pb-[20vh] justify-center overflow-hidden">
+            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
                 {/* Shared container for video and device - sized to device dimensions */}
-                <div ref={sharedContainerRef} className="relative w-[90%] max-w-[1000px] aspect-video">
+                <div ref={sharedContainerRef} className="relative w-[90%] max-w-[1400px] aspect-video">
                     {/* Video container */}
                     <div ref={videoContainerRef} className="absolute inset-0 z-20 flex items-center justify-center">
                         <video

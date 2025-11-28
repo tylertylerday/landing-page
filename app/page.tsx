@@ -31,15 +31,14 @@ export default function Home() {
           <Section
             headline="Elegant Design"
             subtext="Our design philosophy centers on simplicity and functionality. Every pixel is crafted with purpose to ensure a seamless user experience."
-            imageSrc="https://placehold.co/600x600/1a1a1a/FFF?text=Design"
-            imageAlt="Elegant Design"
+            hideImage={true}
             orientation="left"
           />
 
           <Section
             headline="Powerful Performance"
             subtext="Built on the latest technology stack, ensuring lightning-fast load times and smooth interactions across all devices."
-            imageSrc="https://placehold.co/600x600/1a1a1a/FFF?text=Performance"
+            imageSrc="/explore.png"
             imageAlt="Performance"
             orientation="right"
           />
@@ -47,7 +46,7 @@ export default function Home() {
           <Section
             headline="Global Reach"
             subtext="Connect with audiences worldwide. Our platform is optimized for global scale, ensuring your message is heard everywhere."
-            imageSrc="https://placehold.co/600x600/1a1a1a/FFF?text=Global"
+            imageSrc="/explore.png"
             imageAlt="Global Reach"
             orientation="left"
           />
