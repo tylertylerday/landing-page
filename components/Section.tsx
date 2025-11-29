@@ -110,7 +110,7 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
                                 </div>
                             </>
                         ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gray-300 dark:bg-gray-700 text-gray-500">
+                            <div className="w-full h-full flex items-center justify-center bg-gray-700 text-gray-500">
                                 <span>Image Placeholder</span>
                             </div>
                         )}
@@ -134,8 +134,8 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
                             {tag}
                         </div>
                     )}
-                    <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white font-heading">{headline}</h2>
-                    <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">{subtext}</p>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white font-heading">{headline}</h2>
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed">{subtext}</p>
                 </div>
             </div>
         </section>

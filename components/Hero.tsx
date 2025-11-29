@@ -31,10 +31,10 @@ const Hero: React.FC<HeroProps> = ({ headline, subtext, buttonText, onButtonClic
   }, { scope: heroRef });
 
   return (
-    <section ref={heroRef} className="relative h-screen w-full bg-transparent text-black dark:text-white overflow-hidden">
+    <section ref={heroRef} className="relative h-screen w-full bg-transparent text-white overflow-hidden">
       <div ref={contentRef} className="absolute top-[200px] left-1/2 transform -translate-x-1/2 w-full max-w-[600px] px-4 text-center flex flex-col items-center gap-6">
         <h1 className="text-7xl font-bold tracking-tight font-heading">{headline}</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">{subtext}</p>
+        <p className="text-lg text-gray-300">{subtext}</p>
         <button
           onClick={onButtonClick}
           className="group animate-border-button flex items-center text-xl justify-between w-full max-w-[250px] px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:opacity-90 transition-opacity"

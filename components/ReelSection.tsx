@@ -96,10 +96,10 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id }) => {
                     <div className="w-fit mx-auto px-4 py-1 mb-6 border border-[#9653ED] rounded-full text-[#9653ED] text-[20px] font-medium uppercase tracking-wide">
                         Community
                     </div>
-                    <h2 className="text-5xl md:text-7xl font-bold mb-6 font-heading text-black dark:text-white">
+                    <h2 className="text-5xl md:text-7xl font-bold mb-6 font-heading text-white">
                         Your content, protected
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300">
+                    <p className="text-xl text-gray-300">
                         We know theft is a huge issue. Our automated DMCA takedown service scans the web 24/7. If someone steals your content, we submit and process the takedown on your behalf.                    </p>
                 </div>
             </div>
