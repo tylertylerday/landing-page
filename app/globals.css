@@ -34,7 +34,7 @@ body {
   .animate-border-button::before {
     content: '';
     position: absolute;
-    inset: -4px;
+    inset: -2px;
     z-index: -1;
     background: linear-gradient(160deg,
         #ffffff00 0%,
@@ -51,7 +51,7 @@ body {
         #ffffff 95%,
         #00fff3 100%);
     background-size: 300% 300%;
-    filter: blur(20px);
+    filter: blur(0px);
     border-radius: inherit;
     opacity: 1;
     animation: gradientMove 3s linear infinite;
