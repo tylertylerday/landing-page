@@ -25,3 +25,45 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer utilities {
+  .animate-border-button {
+    position: relative;
+  }
+
+  .animate-border-button::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    z-index: -1;
+    background: linear-gradient(160deg,
+        #ffffff00 0%,
+        #ffffff 15%,
+        #00fff3 20%,
+        #800080 25%,
+        #ffffff00 35%,
+        #ffffff00 40%,
+        #ffffff 55%,
+        #00fff3 60%,
+        #800080 65%,
+        #ffffff00 75%,
+        #ffffff00 80%,
+        #ffffff 95%,
+        #00fff3 100%);
+    background-size: 300% 300%;
+    filter: blur(20px);
+    border-radius: inherit;
+    opacity: 1;
+    animation: gradientMove 3s linear infinite;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 15% 15%;
+  }
+
+  100% {
+    background-position: 75% 75%;
+  }
+}

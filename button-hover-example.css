@@ -1,0 +1,91 @@
+button {
+  color: var(--btn-color);
+  background-color: var(--btn-bgcolor);
+  padding: calc(var(--btn-padding-y)) calc(var(--btn-padding-x));
+  font-size: var(--font-size);
+  font-weight: bold;
+  border: 0 none;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  text-transform: uppercase;
+  transition: color var(--easing), background-color var(--easing);
+
+  &.small {
+    padding: calc(var(--btn-padding-y) / 1.4) calc(var(--btn-padding-x) / 1.4);
+    font-size: calc(var(--font-size) / 1.4);
+  }
+
+  &.rounded {
+    border-radius: var(--btn-border-radius);
+  }
+
+  &.pill {
+    border-radius: 500px;
+  }
+
+  &:hover {
+    color: var(--btn-color-hover);
+    background-color: var(--btn-bgcolor-hover);
+  }
+
+  &:hover:before {
+    filter: blur(var(--btn-blur));
+  }
+
+  &:hover:before,
+  &:hover:after {
+    opacity: 1;
+  }
+
+  /* Blurred gradient background */
+  &:before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    z-index: -2;
+    background: linear-gradient(160deg,
+        #ffffff00 0%,
+        #ffffff 15%,
+        #00fff3 20%,
+        #800080 25%,
+        #ffffff00 35%,
+        #ffffff00 40%,
+        #ffffff 55%,
+        #00fff3 60%,
+        #800080 65%,
+        #ffffff00 75%,
+        #ffffff00 80%,
+        #ffffff 95%,
+        #00fff3 100%);
+    background-size: 300% 300%;
+    filter: blur(0px);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity var(--easing), filter var(--easing), background-position var(--easing);
+    animation: gradientMove 3s linear infinite;
+  }
+
+  /* Mask layer to create the gap */
+  &:after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: var(--bg);
+    /* Match body background */
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity var(--easing);
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 15% 15%;
+  }
+
+  100% {
+    background-position: 75% 75%;
+  }
+}
