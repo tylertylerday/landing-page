@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import ReelSection from "@/components/ReelSection";
 import Navbar from "@/components/Navbar";
 import ScrollAnimationSection from "@/components/ScrollAnimationSection";
+import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
   const handleHeroClick = () => {
@@ -64,6 +65,8 @@ export default function Home() {
             imageAlt="Global Reach"
             orientation="left"
           />
+
+          <FAQSection />
 
         </div>
       </div>
