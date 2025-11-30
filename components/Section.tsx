@@ -22,6 +22,7 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
     const imageRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         // Image Animation - different for mobile vs desktop
@@ -50,12 +51,28 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
                         start: "top 80%",
                         toggleActions: "play none none reverse",
                     },
-                    opacity: 0,
+                    opacity: 1,
                     x: xOffset,
-                    duration: 1,
+                    duration: 2,
                     ease: "power1.out",
                 });
             }
+        }
+
+        // Text Content Animation
+        if (textRef.current) {
+            gsap.from(textRef.current.children, {
+                scrollTrigger: {
+                    trigger: textRef.current,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse",
+                },
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                stagger: 0,
+                ease: "power3.out",
+            });
         }
 
         // Fade out content as section scrolls out
@@ -64,7 +81,7 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "bottom bottom",
-                    end: "bottom 50%",
+                    end: "bottom 30%",
                     scrub: true,
                 },
                 opacity: 0,
@@ -74,7 +91,7 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
     }, { scope: sectionRef });
 
     return (
-        <section id={id} ref={sectionRef} className="relative overflow-visible min-h-screen w-full flex flex-col md:block z-20 ">
+        <section id={id} ref={sectionRef} className="relative overflow-visible h-[70vh] w-full flex flex-col md:block z-20 ">
             {/* Image Container - Absolute on Desktop, Stacked on Mobile */}
             {!hideImage && (
                 <div
@@ -120,10 +137,10 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
 
             {/* Content Container - Centered and Aligned */}
             <div ref={contentRef} className={`
-                relative z-10 container mx-auto px-4 h-full flex flex-col justify-center min-h-[50vh] md:min-h-screen
+                relative z-10 container mx-auto px-4 h-full flex flex-col justify-center min-h-[50vh]
                 ${orientation === 'left' ? 'md:items-end' : 'md:items-start'}
             `}>
-                <div className="w-full md:w-1/2 flex flex-col gap-6 text-center md:text-left p-8 md:p-16">
+                <div ref={textRef} className="w-full md:w-1/2 flex flex-col gap-6 text-center md:text-left p-8 md:p-16">
                     {tag && (
                         <div className={`
                             w-fit px-4 py-1 mb-2

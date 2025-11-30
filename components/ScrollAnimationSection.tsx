@@ -35,8 +35,8 @@ const ScrollAnimationSection = () => {
 
             tl.fromTo(
                 videoRef.current,
-                { scale: 1.2, y: 0, borderRadius: "0px" },
-                { scale: 0.4, y: -20, borderRadius: "20px", duration: 1, ease: "power2.out" },
+                { scale: 1, y: 0 },
+                { scale: 0.4, y: -20, duration: 1, ease: "power2.out" },
                 "<"
             );
 
@@ -81,7 +81,7 @@ const ScrollAnimationSection = () => {
                 {/* Shared container for video and device - sized to device dimensions */}
                 <div ref={sharedContainerRef} className="relative w-[90%] max-w-[1400px] aspect-video">
                     {/* Video container */}
-                    <div ref={videoContainerRef} className="absolute inset-0 z-20 flex items-center justify-center">
+                    <div ref={videoContainerRef} className="absolute overflow-hidden inset-0 z-20 flex items-center justify-center">
                         <video
                             ref={videoRef}
                             className="w-full h-full object-cover shadow-2xl"

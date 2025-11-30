@@ -40,6 +40,9 @@ export default function Home() {
             orientation="left"
           />
 
+          {/* Empty spacer*/}
+          <div className="h-[20vh] w-full" />
+
           <Section
             id="discovery"
             headline="Reach a new audience"
