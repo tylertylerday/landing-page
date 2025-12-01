@@ -39,7 +39,7 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
                     },
                     opacity: 0,
                     duration: 1,
-                    ease: "power1.out",
+                    ease: "power2.inOut",
                 });
             } else {
                 // Desktop: fade-in with slide
@@ -52,9 +52,10 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
                         toggleActions: "play none none reverse",
                     },
                     opacity: 1,
+                    delay: .25,
                     x: xOffset,
-                    duration: 2,
-                    ease: "power1.out",
+                    duration: 1.5,
+                    ease: "power2.inOut",
                 });
             }
         }
@@ -64,28 +65,30 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
             gsap.from(textRef.current.children, {
                 scrollTrigger: {
                     trigger: textRef.current,
-                    start: "top 80%",
+                    start: "center 85%",
                     toggleActions: "play none none reverse",
                 },
-                y: 30,
+                y: 60,
                 opacity: 0,
-                duration: 1,
+                duration: .75,
                 stagger: 0,
-                ease: "power3.out",
+                ease: "power2.inOut",
             });
         }
 
         // Fade out content as section scrolls out
         if (contentRef.current) {
+
             gsap.to(contentRef.current, {
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: "bottom bottom",
-                    end: "bottom 30%",
+                    start: "5% 5%",
+                    toggleActions: "play none none reverse",
                     scrub: true,
                 },
+                y: 0,
                 opacity: 0,
-                ease: "none",
+                ease: "power3.out",
             });
         }
     }, { scope: sectionRef });
@@ -144,8 +147,8 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
                     {tag && (
                         <div className={`
                             w-fit px-4 py-1 mb-2
-                            border border-[#9653ED] rounded-full
-                            text-[#9653ED] text-gray-300 text-[20px] font-medium uppercase tracking-wide
+                            border border-[#9653ED] rounded-full bg-[#9653ED26]
+                            text-[#ffffff] text-[20px] font-medium uppercase tracking-wide
                             ${orientation === 'left' ? 'mx-auto md:mx-0' : 'mx-auto md:mx-0'}
                         `}>
                             {tag}

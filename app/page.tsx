@@ -13,24 +13,23 @@ export default function Home() {
   };
 
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-between">
+    <main className="grid grid-cols-1 min-h-screen">
       <Navbar />
-      <ScrollAnimationSection />
+      <div className="col-start-1 row-start-1">
+        <ScrollAnimationSection />
+      </div>
 
-      {/* Spacer to ensure scroll height for the absolute content */}
-      <div className="h-[200vh] w-full pointer-events-none" />
-
-      <div className="absolute top-0 w-full z-30">
+      <div className="col-start-1 row-start-1 w-full z-30">
         <div className="relative">
           <Hero
-            headline="Cosplay is expensive."
-            subtext="Co-Splay is the first platform built for cosplayers. Monetize your work, and connect with other cosplayers."
+            headline="A home built for cosplay"
+            subtext="Co-Splay is the first platform designed for cosplayers. Showcase your content and connect with a new, dedicated fanbase."
             buttonText="Join the waitlist"
             onButtonClick={handleHeroClick}
           />
 
           {/* Empty spacer for scroll animation */}
-          <div className="h-[100vh] w-full" />
+          <div className="h-[70vh] w-full" />
 
           <Section
             id="monetize"
@@ -49,8 +48,8 @@ export default function Home() {
             headline="Reach a new audience"
             tag="Discovery"
             subtext="Co-Splay is built for discovery. Our Explore feed helps your content get discovered by users natively on the platform."
-            imageSrc="/ipad_intro.webp"
-            mobileImageSrc="/intro-ipad-mobile.webp" // Replace with mobile-specific image
+            imageSrc="/ipad_reels.webp"
+            mobileImageSrc="/ipad_reels.webp" // Replace with mobile-specific image
             imageAlt="Discovery"
             orientation="right"
           />
@@ -58,8 +57,8 @@ export default function Home() {
 
           <Section
             headline="Easily manage your own content"
-            tag="Worldwide"
-            subtext="Manage your page, sales, messages, and storefront without juggling five different apps. Co-Splay's tools are designed specifically for cosplay creators, with human support when you need it and a community that already shares your niche."
+            tag="Creator Tools"
+            subtext="Manage your page, sales, messages, and storefront from a single dashboard. Co-Splay’s tools are designed specifically for cosplay creators, with human support when you need it and a community that already shares your niche."
             imageSrc="/dashboard-ipad.webp"
             mobileImageSrc="/dashboard-ipad.webp" // Replace with mobile-specific image
             imageAlt="Global Reach"

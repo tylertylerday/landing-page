@@ -39,7 +39,7 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <section className="w-full bg-[#3C215F] pt-20 pb-40">
+        <section className="w-full bg-[#2D1947] pt-20 pb-40">
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Left Column - Heading */}

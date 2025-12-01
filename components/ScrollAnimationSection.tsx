@@ -36,14 +36,14 @@ const ScrollAnimationSection = () => {
             tl.fromTo(
                 videoRef.current,
                 { scale: 1, y: 0 },
-                { scale: 0.4, y: -20, duration: 1, ease: "power2.out" },
+                { scale: 0.4, y: 0, duration: 1, ease: "power2.out" },
                 "<"
             );
 
             tl.fromTo(
                 videoContainerRef.current,
                 { clipPath: "inset(0% 0% 0% 0%)", x: "0%", y: "0%" },
-                { clipPath: "inset(5% 39.5% 7% 40%)", x: "24.7%", y: "-9.1", duration: 1, ease: "power2.out" },
+                { clipPath: "inset(5% 38.7% 7% 40%)", x: "29.2%", y: "-5.5%", duration: 1, ease: "power2.out" },
                 "<"
             );
 
@@ -76,7 +76,7 @@ const ScrollAnimationSection = () => {
     );
 
     return (
-        <div ref={containerRef} className="relative w-full h-[300vh] z-10">
+        <div ref={containerRef} className="relative w-full h-[270vh] z-10">
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
                 {/* Shared container for video and device - sized to device dimensions */}
                 <div ref={sharedContainerRef} className="relative w-[90%] max-w-[1400px] aspect-video">
@@ -100,7 +100,7 @@ const ScrollAnimationSection = () => {
                     >
                         <div className="relative w-full h-full">
                             <Image
-                                src="/newpost-ipad.webp"
+                                src="/ipad_newpost.webp"
                                 alt="Device Frame"
                                 fill
                                 className="object-contain"

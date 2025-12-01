@@ -63,15 +63,15 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id }) => {
             <div className="relative md:sticky md:top-0 min-h-screen md:h-screen w-full overflow-hidden flex flex-col md:block items-center justify-center py-20 md:py-0">
 
                 {/* Content Container */}
-                <div className="relative z-10 text-center max-w-2xl px-4 mb-12 md:mb-0 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
-                    <div className="w-fit mx-auto px-4 py-1 mb-6 border border-[#9653ED] rounded-full text-[#9653ED] text-[20px] font-medium uppercase tracking-wide">
-                        Community
+                <div className="relative z-10 text-center max-w-md px-4 mb-12 md:mb-0 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+                    <div className="w-fit mx-auto px-4 py-1 mb-6 border border-[#9653ED] rounded-full bg-[#9653ED26] text-[#ffffff] text-[20px] font-medium uppercase tracking-wide">
+                        DMCA Safety
                     </div>
-                    <h2 className="text-5xl md:text-7xl font-bold mb-6 font-heading text-white">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-white">
                         Your content, protected
                     </h2>
                     <p className="text-xl text-gray-300">
-                        We know theft is a huge issue. Our automated DMCA takedown service scans the web 24/7. If someone steals your content, we submit and process the takedown on your behalf.
+                        Our automated DMCA takedown service scans the web 24/7. If your content is leaked, we submit and process the takedown on your behalf.
                     </p>
                 </div>
 
