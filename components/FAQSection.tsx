@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface FAQItem {
     question: string;
@@ -39,16 +39,13 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <section className="w-full bg-[#3C215F] py-20">
+        <section className="w-full bg-[#3C215F] pt-20 pb-40">
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Left Column - Heading */}
                     <div className="flex flex-col justify-start">
-                        <div className="w-fit px-4 py-1 mb-6 border border-[#9653ED] rounded-full text-[#9653ED] text-[20px] font-medium uppercase tracking-wide">
-                            FAQ
-                        </div>
                         <h2 className="text-4xl md:text-5xl font-bold text-white font-heading mb-6">
-                            Frequently Asked Questions
+                            FAQ
                         </h2>
                         <p className="text-lg text-gray-300 max-w-md">
                             Got questions? We've got answers. Here's everything you need to know about our protection services.
@@ -60,20 +57,20 @@ const FAQSection: React.FC = () => {
                         {faqs.map((faq, index) => (
                             <div
                                 key={index}
-                                className="border-b border-[#9653ED]/30 last:border-none"
+                                className="bg-[#4F376F] rounded-lg  last:border-none"
                             >
                                 <button
                                     onClick={() => toggleFAQ(index)}
-                                    className="w-full flex bg-[#4F376F] rounded-lg items-start justify-between gap-4 py-4 text-left group min-h-[56px] px-3 pt-2"
+                                    className="w-full flex items-start justify-between gap-4 py-6 text-left group min-h-[56px] px-4 pt-4"
                                 >
-                                    <span className="text-xl font-medium text-white group-hover:text-[#ffffff] transition-colors">
+                                    <span className="text-l font-medium text-[#E3E3E3] group-hover:text-[#ffffff] transition-colors">
                                         {faq.question}
                                     </span>
-                                    <span className="flex-shrink-0 mt-1 text-[#9653ED]">
+                                    <span className="flex-shrink-0 bg-[#604B7D] group-hover:bg-[#755C96] transition-colors duration-200 p-1 rounded-sm text-[#E3E3E3]">
                                         {openIndex === index ? (
-                                            <Minus className="w-6 h-6" />
+                                            <ChevronUp className="w-6 h-6" />
                                         ) : (
-                                            <Plus className="w-6 h-6" />
+                                            <ChevronDown className="w-6 h-6" />
                                         )}
                                     </span>
                                 </button>
@@ -81,7 +78,7 @@ const FAQSection: React.FC = () => {
                                     className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-96 opacity-100 mb-6' : 'max-h-0 opacity-0'
                                         }`}
                                 >
-                                    <p className="text-gray-300 leading-relaxed px-3">
+                                    <p className="text-[#E3E3E3] text-xl leading-7 px-4">
                                         {faq.answer}
                                     </p>
                                 </div>

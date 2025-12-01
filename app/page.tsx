@@ -66,6 +66,8 @@ export default function Home() {
             orientation="left"
           />
 
+          <div className="h-[10vh] w-full" />
+
           <FAQSection />
 
         </div>

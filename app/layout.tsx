@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./mesh.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const geistSans = Geist({
@@ -32,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${monsterFont.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${monsterFont.variable} antialiased mesh-background`}
       >
         <SmoothScroll />
         {children}
