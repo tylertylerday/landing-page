@@ -8,27 +8,14 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollAnimationSection = () => {
+const ScrollAnimationSectionReel = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
     const videoContainerRef = useRef<HTMLDivElement>(null);
     const deviceRef = useRef<HTMLDivElement>(null);
     const sharedContainerRef = useRef<HTMLDivElement>(null);
 
-    React.useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
 
-        const handleTimeUpdate = () => {
-            if (video.currentTime >= 3) {
-                video.currentTime = 0;
-                video.play();
-            }
-        };
-
-        video.addEventListener("timeupdate", handleTimeUpdate);
-        return () => video.removeEventListener("timeupdate", handleTimeUpdate);
-    }, []);
 
     useGSAP(
         () => {
@@ -45,20 +32,20 @@ const ScrollAnimationSection = () => {
             tl.fromTo(
                 deviceRef.current,
                 { scale: 0.8, opacity: 0, y: 100 },
-                { scale: 1.2, opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+                { scale: 1.7, opacity: 1, y: 0, duration: 1, ease: "power2.out" }
             );
 
-            tl.fromTo(
-                videoRef.current,
-                { scale: 1, y: 0 },
-                { scale: 0.4, y: 0, duration: 1, ease: "power2.out" },
-                "<"
-            );
+            // tl.fromTo(
+            //     videoRef.current,
+            //     { scale: 1, y: 0 },
+            //     { scale: 0.4, y: 0, duration: 1, ease: "power2.out" },
+            //     "<"
+            // );
 
             tl.fromTo(
                 videoContainerRef.current,
-                { clipPath: "inset(0% 0% 0% 0%)", x: "0%", y: "0%" },
-                { clipPath: "inset(5% 38.7% 7% 40%)", x: "29.2%", y: "-5.5%", duration: 1, ease: "power2.out" },
+                { scale: 1, x: "0%", y: "0%" },
+                { scale: 0.609, x: "11.55%", y: "0.999%", duration: 1, ease: "power2.out" },
                 "<"
             );
 
@@ -94,9 +81,9 @@ const ScrollAnimationSection = () => {
         <div ref={containerRef} className="relative w-full h-[270vh] z-10">
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
                 {/* Shared container for video and device - sized to device dimensions */}
-                <div ref={sharedContainerRef} className="relative w-[90%] max-w-[1400px] aspect-video">
+                <div ref={sharedContainerRef} className="relative w-[90%] max-w-[800px] aspect-vert">
                     {/* Video container */}
-                    <div ref={videoContainerRef} className="absolute overflow-hidden inset-0 z-20 flex items-center justify-center">
+                    <div ref={videoContainerRef} className="absolute overflow-hidden rounded-4xl inset-0 z-20 flex items-center justify-center">
                         <video
                             ref={videoRef}
                             className="w-full h-full object-cover shadow-2xl"
@@ -104,8 +91,69 @@ const ScrollAnimationSection = () => {
                             muted
                             loop
                             playsInline
-                            src="/postvideo.mp4"
+                            src="/girls.mp4"
                         />
+
+                        {/* UI Overlay Elements */}
+                        <div className="absolute inset-0 pointer-events-none">
+                            {/* Lower Left: Avatar + Name + Follow Button */}
+                            <div className="absolute bottom-24 left-6 flex flex-col gap-3 pointer-events-auto">
+                                <div className="flex items-center gap-3">
+                                    {/* Avatar */}
+                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center overflow-hidden border-2 border-white shadow-lg">
+                                        <span className="text-white font-bold text-lg">CS</span>
+                                    </div>
+
+                                    {/* Name */}
+                                    <span className="text-white font-semibold text-base drop-shadow-lg">
+                                        @cosplayer
+                                    </span>
+
+                                    {/* Follow Button */}
+                                    <button className="px-4 py-1.5 bg-white text-black font-semibold text-sm rounded-full hover:bg-gray-100 transition-colors shadow-md">
+                                        Follow
+                                    </button>
+                                </div>
+
+                                {/* Caption */}
+                                <p className="text-white text-sm drop-shadow-lg max-w-[280px] line-clamp-1">
+                                    Check out my latest cosplay creation! ✨
+                                </p>
+                            </div>
+
+                            {/* Lower Right: Vertical Action Buttons */}
+                            <div className="absolute bottom-24 right-6 flex flex-col gap-6 pointer-events-auto">
+                                {/* Heart/Like Button */}
+                                <div className="flex flex-col items-center gap-1">
+                                    <button className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors">
+                                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        </svg>
+                                    </button>
+                                    <span className="text-white text-xs font-semibold drop-shadow-lg">12.5K</span>
+                                </div>
+
+                                {/* Comment Button */}
+                                <div className="flex flex-col items-center gap-1">
+                                    <button className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors">
+                                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                        </svg>
+                                    </button>
+                                    <span className="text-white text-xs font-semibold drop-shadow-lg">342</span>
+                                </div>
+
+                                {/* Dollar Sign/Tip Button */}
+                                <div className="flex flex-col items-center gap-1">
+                                    <button className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center hover:from-yellow-300 hover:to-orange-400 transition-all shadow-lg">
+                                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </button>
+                                    <span className="text-white text-xs font-semibold drop-shadow-lg">Send Tip</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Device frame */}
@@ -115,7 +163,7 @@ const ScrollAnimationSection = () => {
                     >
                         <div className="relative w-full h-full">
                             <Image
-                                src="/ipad_newpost2.webp"
+                                src="/ipad_reels.webp"
                                 alt="Device Frame"
                                 fill
                                 className="object-contain"
@@ -128,4 +176,4 @@ const ScrollAnimationSection = () => {
     );
 };
 
-export default ScrollAnimationSection;
+export default ScrollAnimationSectionReel;
