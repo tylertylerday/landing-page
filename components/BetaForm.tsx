@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useForm } from "@tanstack/react-form";
-import { zodValidator } from "@tanstack/zod-form-adapter";
+
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,7 +39,7 @@ const BetaForm = () => {
             comments: "",
             privacyPolicy: false,
         } as FormValues,
-        validatorAdapter: zodValidator(),
+
         validators: {
             onChange: formSchema,
         },
