@@ -40,7 +40,7 @@
         --x-1: 66%;
         --s-start-2: 15;
         --s-end-2: 60;
-        --c-2: hsla(277.94117647058823, 85%, 30%, 1);
+        --c-2: rgb(82, 15, 121);
         --x-2: 63%;
         --y-2: 85%;
         --c-3: rgb(64, 35, 112);
@@ -131,7 +131,7 @@
 @property --c-2 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(302, 71%, 29%, 1)
+    initial-value: rgb(90, 13, 87)
 }
 
 @property --x-2 {
