@@ -15,7 +15,7 @@ const Navbar = () => {
         if (pathname === "/") {
             const element = document.getElementById(id);
             if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
+                element.scrollIntoView({ behavior: "smooth", block: "center" });
             }
         } else {
             // Navigate to home page with hash
@@ -39,7 +39,7 @@ const Navbar = () => {
             setTimeout(() => {
                 const element = document.getElementById(id);
                 if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
+                    element.scrollIntoView({ behavior: "smooth", block: "center" });
                 }
             }, 100);
         }

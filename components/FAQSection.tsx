@@ -67,7 +67,7 @@ const FAQSection: React.FC = () => {
                                     <span className="text-l font-medium text-[#E3E3E3] group-hover:text-[#ffffff] transition-colors">
                                         {faq.question}
                                     </span>
-                                    <span className="flex-shrink-0 bg-[#604B7D] group-hover:bg-[#755C96] transition-colors duration-200 p-1 rounded-sm text-[#E3E3E3]">
+                                    <span className="shrink-0 bg-[#604B7D] group-hover:bg-[#755C96] transition-colors duration-200 p-1 rounded-sm text-[#E3E3E3]">
                                         {openIndex === index ? (
                                             <ChevronUp className="w-6 h-6" />
                                         ) : (

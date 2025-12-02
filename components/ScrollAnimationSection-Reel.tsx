@@ -51,7 +51,7 @@ const ScrollAnimationSectionReel = () => {
 
             tl.fromTo(
                 sharedContainerRef.current,
-                { y: "45%" },
+                { y: "55%" },
                 { y: "0%", duration: 1, ease: "power2.out" },
                 "<"
             );
@@ -81,7 +81,7 @@ const ScrollAnimationSectionReel = () => {
         <div ref={containerRef} className="relative w-full h-[270vh] z-10">
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
                 {/* Shared container for video and device - sized to device dimensions */}
-                <div ref={sharedContainerRef} className="relative w-[90%] max-w-[800px] aspect-vert">
+                <div ref={sharedContainerRef} className="relative h-[min(80vh,90vw*1.78)] aspect-vert">
                     {/* Video container */}
                     <div ref={videoContainerRef} className="absolute overflow-hidden rounded-4xl inset-0 z-20 flex items-center justify-center">
                         <video
@@ -97,32 +97,37 @@ const ScrollAnimationSectionReel = () => {
                         {/* UI Overlay Elements */}
                         <div className="absolute inset-0 pointer-events-none">
                             {/* Lower Left: Avatar + Name + Follow Button */}
-                            <div className="absolute bottom-24 left-6 flex flex-col gap-3 pointer-events-auto">
+                            <div className="absolute bottom-12 left-6 flex flex-col gap-3 pointer-events-auto">
                                 <div className="flex items-center gap-3">
                                     {/* Avatar */}
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center overflow-hidden border-2 border-white shadow-lg">
-                                        <span className="text-white font-bold text-lg">CS</span>
+                                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-pink-400 shadow-lg relative">
+                                        <Image
+                                            src="/ella_frost_avatar.webp"
+                                            alt="Ella Frost"
+                                            fill
+                                            className="object-cover"
+                                        />
                                     </div>
 
                                     {/* Name */}
-                                    <span className="text-white font-semibold text-base drop-shadow-lg">
-                                        @cosplayer
+                                    <span className="text-white font-semibold text-2xl drop-shadow-lg">
+                                        Ella Frost
                                     </span>
 
                                     {/* Follow Button */}
-                                    <button className="px-4 py-1.5 bg-white text-black font-semibold text-sm rounded-full hover:bg-gray-100 transition-colors shadow-md">
+                                    <button className="px-4 py-1.5 text-white border-2 font-semibold text-sm rounded-full hover:bg-gray-100 transition-colors shadow-md">
                                         Follow
                                     </button>
                                 </div>
 
                                 {/* Caption */}
-                                <p className="text-white text-sm drop-shadow-lg max-w-[280px] line-clamp-1">
-                                    Check out my latest cosplay creation! ✨
+                                <p className="text-white text-xl drop-shadow-lg max-w-[280px] line-clamp-1">
+                                    Feeling magical with my girls 🪄
                                 </p>
                             </div>
 
                             {/* Lower Right: Vertical Action Buttons */}
-                            <div className="absolute bottom-24 right-6 flex flex-col gap-6 pointer-events-auto">
+                            <div className="absolute bottom-16 right-6 flex flex-col gap-6 pointer-events-auto">
                                 {/* Heart/Like Button */}
                                 <div className="flex flex-col items-center gap-1">
                                     <button className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors">
@@ -145,7 +150,7 @@ const ScrollAnimationSectionReel = () => {
 
                                 {/* Dollar Sign/Tip Button */}
                                 <div className="flex flex-col items-center gap-1">
-                                    <button className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center hover:from-yellow-300 hover:to-orange-400 transition-all shadow-lg">
+                                    <button className="w-12 h-12 rounded-full bg-linear-to-br from-yellow-400 to-orange-500 flex items-center justify-center hover:from-yellow-300 hover:to-orange-400 transition-all shadow-lg">
                                         <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
@@ -163,7 +168,7 @@ const ScrollAnimationSectionReel = () => {
                     >
                         <div className="relative w-full h-full">
                             <Image
-                                src="/ipad_reels.webp"
+                                src="/ipad_reels-new.webp"
                                 alt="Device Frame"
                                 fill
                                 className="object-contain"

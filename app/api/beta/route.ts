@@ -4,12 +4,12 @@ import { z } from "zod";
 
 const formSchema = z.object({
     name: z.string().min(1),
-    email: z.string().email(),
+    email: z.email(),
     phone: z.string().optional(),
     instagram: z.string().optional(),
     tiktok: z.string().optional(),
-    snapchat: z.string().optional(),
-    onlyfans: z.string().optional(),
+    x: z.string().optional(),
+    twitch: z.string().optional(),
     comments: z.string().optional(),
     privacyPolicy: z.literal(true),
 });
@@ -41,8 +41,8 @@ export async function POST(request: Request) {
                     Phone: validatedData.phone,
                     Instagram: validatedData.instagram,
                     TikTok: validatedData.tiktok,
-                    Snapchat: validatedData.snapchat,
-                    OnlyFans: validatedData.onlyfans,
+                    X: validatedData.x,
+                    Twitch: validatedData.twitch,
                     Comments: validatedData.comments,
                 },
             },

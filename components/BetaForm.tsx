@@ -16,8 +16,8 @@ const formSchema = z.object({
     phone: z.string().optional(),
     instagram: z.string().optional(),
     tiktok: z.string().optional(),
-    snapchat: z.string().optional(),
-    onlyfans: z.string().optional(),
+    x: z.string().optional(),
+    twitch: z.string().optional(),
     comments: z.string().optional(),
     privacyPolicy: z.boolean().refine((val) => val === true, {
         message: "You must agree to the privacy policy",
@@ -34,8 +34,8 @@ const BetaForm = () => {
             phone: "",
             instagram: "",
             tiktok: "",
-            snapchat: "",
-            onlyfans: "",
+            x: "",
+            twitch: "",
             comments: "",
             privacyPolicy: false,
         } as FormValues,
@@ -176,10 +176,10 @@ const BetaForm = () => {
                         )}
                     />
                     <form.Field
-                        name="snapchat"
+                        name="x"
                         children={(field) => (
                             <div className="space-y-2">
-                                <Label htmlFor={field.name}>Snapchat</Label>
+                                <Label htmlFor={field.name}>X "Twitter"</Label>
                                 <Input
                                     id={field.name}
                                     name={field.name}
@@ -193,10 +193,10 @@ const BetaForm = () => {
                         )}
                     />
                     <form.Field
-                        name="onlyfans"
+                        name="twitch"
                         children={(field) => (
                             <div className="space-y-2">
-                                <Label htmlFor={field.name}>OnlyFans</Label>
+                                <Label htmlFor={field.name}>Twitch</Label>
                                 <Input
                                     id={field.name}
                                     name={field.name}

@@ -1,9 +1,7 @@
 "use client";
 
-import React from "react";
 import Navbar from "@/components/Navbar";
 import BetaForm from "@/components/BetaForm";
-import ScrollAnimationSection from "@/components/ScrollAnimationSection";
 
 export default function BetaPage() {
     return (

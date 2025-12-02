@@ -42,7 +42,7 @@ export default function Test() {
 
                     <Section
                         id="monetize"
-                        headline="Fund your next build"
+                        headline="Fund your new lifestyle"
                         tag="Monetization"
                         subtext="We give you the tools to earn from your fans through subscriptions, tips, and pay-per-view content. Turn this expensive hobby into a thriving career."
                         imageSrc="/ipad_newpost2.webp"
