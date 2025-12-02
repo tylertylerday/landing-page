@@ -89,7 +89,7 @@ const ScrollAnimationSection = () => {
                             muted
                             loop
                             playsInline
-                            src="/heroVideo.mp4"
+                            src="/postvideo.mp4"
                         />
                     </div>
 
