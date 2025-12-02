@@ -89,7 +89,7 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id }) => {
                                 muted
                                 loop
                                 playsInline
-                                src="/heroVideo.mp4"
+                                src="/left-video.mp4"
                             />
                         </div>
                     </div>
@@ -106,7 +106,7 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id }) => {
                                 muted
                                 loop
                                 playsInline
-                                src="/heroVideo.mp4"
+                                src="/right-video.mp4"
                             />
                         </div>
                     </div>
