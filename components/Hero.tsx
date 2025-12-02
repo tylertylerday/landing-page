@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,10 +11,9 @@ interface HeroProps {
   headline: string;
   subtext: string;
   buttonText: string;
-  onButtonClick?: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ headline, subtext, buttonText, onButtonClick }) => {
+const Hero: React.FC<HeroProps> = ({ headline, subtext, buttonText }) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -35,13 +35,13 @@ const Hero: React.FC<HeroProps> = ({ headline, subtext, buttonText, onButtonClic
       <div ref={contentRef} className="absolute top-[200px] left-1/2 transform -translate-x-1/2 w-full max-w-[600px] px-4 text-center flex flex-col items-center gap-6">
         <h1 className="text-7xl font-bold tracking-tight font-heading pb-8 border-b border-[#ffffff1A]">{headline}</h1>
         <p className="text-lg text-gray-300">{subtext}</p>
-        <button
-          onClick={onButtonClick}
+        <Link
+          href="/beta"
           className="group animate-border-button flex items-center text-xl justify-between w-full max-w-[250px] px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:opacity-90 transition-opacity"
         >
           {buttonText}
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </button>
+        </Link>
       </div>
     </section>
   );

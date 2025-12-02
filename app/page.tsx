@@ -8,9 +8,7 @@ import ScrollAnimationSection from "@/components/ScrollAnimationSection";
 import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
-  const handleHeroClick = () => {
-    console.log("Hero button clicked");
-  };
+
 
   return (
     <main className="grid grid-cols-1 min-h-screen">
@@ -25,7 +23,6 @@ export default function Home() {
             headline="A home built for cosplay"
             subtext="Co-Splay is the first platform designed for cosplayers. Showcase your content and connect with a new, dedicated fanbase."
             buttonText="Join the waitlist"
-            onButtonClick={handleHeroClick}
           />
 
           {/* Empty spacer for scroll animation */}
