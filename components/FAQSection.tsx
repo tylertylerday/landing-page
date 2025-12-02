@@ -101,7 +101,7 @@ const FAQSection: React.FC = () => {
                     </p>
                     <Link
                         href="/beta"
-                        className="group animate-border-button flex items-center text-xl justify-between w-full max-w-[250px] px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:bg-[#7d3ec9] transition-colors z--1"
+                        className="group animate-border-button flex items-center text-xl justify-between w-full max-w-[250px] px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:bg-[#5a2997] transition-colors z--1"
                     >
                         Get Started
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

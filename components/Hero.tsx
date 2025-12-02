@@ -37,7 +37,7 @@ const Hero: React.FC<HeroProps> = ({ headline, subtext, buttonText }) => {
         <p className="text-lg text-gray-300">{subtext}</p>
         <Link
           href="/beta"
-          className="group animate-border-button flex items-center text-xl justify-between w-full max-w-[250px] px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:opacity-90 transition-opacity"
+          className="group animate-border-button flex items-center text-xl justify-between w-full max-w-[250px] px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:bg-[#5a2997] transition-colors"
         >
           {buttonText}
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

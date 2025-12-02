@@ -68,7 +68,7 @@ const BetaForm = () => {
     });
 
     return (
-        <div className="w-full max-w-md mx-auto p-6 bg-[#1a1a1a] rounded-xl border border-[#333]">
+        <div className="w-full max-w-md mx-auto p-6 bg-[#160C24] rounded-xl border border-[#2D1947]">
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -88,10 +88,10 @@ const BetaForm = () => {
                                 value={field.state.value}
                                 onBlur={field.handleBlur}
                                 onChange={(e) => field.handleChange(e.target.value)}
-                                className="bg-[#2a2a2a] border-[#444] text-white"
+                                className="bg-[#131313] border-[#444] text-white"
                             />
                             {field.state.meta.errors ? (
-                                <p className="text-red-500 text-sm">
+                                <p className="text-red-300 text-sm">
                                     {field.state.meta.errors.map((e: any) => e?.message || e).join(", ")}
                                 </p>
                             ) : null}
@@ -111,10 +111,10 @@ const BetaForm = () => {
                                 value={field.state.value}
                                 onBlur={field.handleBlur}
                                 onChange={(e) => field.handleChange(e.target.value)}
-                                className="bg-[#2a2a2a] border-[#444] text-white"
+                                className="bg-[#131313] border-[#444] text-white"
                             />
                             {field.state.meta.errors ? (
-                                <p className="text-red-500 text-sm">
+                                <p className="text-red-300 text-sm">
                                     {field.state.meta.errors.map((e: any) => e?.message || e).join(", ")}
                                 </p>
                             ) : null}
@@ -134,7 +134,7 @@ const BetaForm = () => {
                                 value={field.state.value || ""}
                                 onBlur={field.handleBlur}
                                 onChange={(e) => field.handleChange(e.target.value)}
-                                className="bg-[#2a2a2a] border-[#444] text-white"
+                                className="bg-[#131313] border-[#444] text-white"
                             />
                         </div>
                     )}
@@ -152,7 +152,7 @@ const BetaForm = () => {
                                     value={field.state.value || ""}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
-                                    className="bg-[#2a2a2a] border-[#444] text-white"
+                                    className="bg-[#131313] border-[#444] text-white"
                                     placeholder="@handle"
                                 />
                             </div>
@@ -169,7 +169,7 @@ const BetaForm = () => {
                                     value={field.state.value || ""}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
-                                    className="bg-[#2a2a2a] border-[#444] text-white"
+                                    className="bg-[#131313] border-[#444] text-white"
                                     placeholder="@handle"
                                 />
                             </div>
@@ -186,7 +186,7 @@ const BetaForm = () => {
                                     value={field.state.value || ""}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
-                                    className="bg-[#2a2a2a] border-[#444] text-white"
+                                    className="bg-[#131313] border-[#444] text-white"
                                     placeholder="@handle"
                                 />
                             </div>
@@ -203,7 +203,7 @@ const BetaForm = () => {
                                     value={field.state.value || ""}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
-                                    className="bg-[#2a2a2a] border-[#444] text-white"
+                                    className="bg-[#131313] border-[#444] text-white"
                                     placeholder="@handle"
                                 />
                             </div>
@@ -222,7 +222,7 @@ const BetaForm = () => {
                                 value={field.state.value || ""}
                                 onBlur={field.handleBlur}
                                 onChange={(e) => field.handleChange(e.target.value)}
-                                className="bg-[#2a2a2a] border-[#444] text-white min-h-[100px]"
+                                className="bg-[#131313] border-[#444] text-white min-h-[100px]"
                             />
                         </div>
                     )}
@@ -243,7 +243,7 @@ const BetaForm = () => {
                                 </Label>
                             </div>
                             {field.state.meta.errors ? (
-                                <p className="text-red-500 text-sm mt-1">
+                                <p className="text-red-300 text-sm mt-1">
                                     {field.state.meta.errors.map((e: any) => e?.message || e).join(", ")}
                                 </p>
                             ) : null}
