@@ -6,6 +6,7 @@ import { useForm } from "@tanstack/react-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PhoneInput } from "@/components/ui/phone-input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -81,14 +82,14 @@ const BetaForm = () => {
                     name="name"
                     children={(field) => (
                         <div className="space-y-2">
-                            <Label htmlFor={field.name}>Name *</Label>
+                            <Label htmlFor={field.name} className="text-[#E3E3E3]">Name *</Label>
                             <Input
                                 id={field.name}
                                 name={field.name}
                                 value={field.state.value}
                                 onBlur={field.handleBlur}
                                 onChange={(e) => field.handleChange(e.target.value)}
-                                className="bg-[#131313] border-[#444] text-white"
+                                className="bg-[#291F33] border-[#444] text-white"
                             />
                             {field.state.meta.errors ? (
                                 <p className="text-red-300 text-sm">
@@ -103,7 +104,7 @@ const BetaForm = () => {
                     name="email"
                     children={(field) => (
                         <div className="space-y-2">
-                            <Label htmlFor={field.name}>Email *</Label>
+                            <Label htmlFor={field.name} className="text-[#E3E3E3]">Email *</Label>
                             <Input
                                 id={field.name}
                                 name={field.name}
@@ -111,7 +112,7 @@ const BetaForm = () => {
                                 value={field.state.value}
                                 onBlur={field.handleBlur}
                                 onChange={(e) => field.handleChange(e.target.value)}
-                                className="bg-[#131313] border-[#444] text-white"
+                                className="bg-[#291F33] border-[#444] text-white"
                             />
                             {field.state.meta.errors ? (
                                 <p className="text-red-300 text-sm">
@@ -126,15 +127,14 @@ const BetaForm = () => {
                     name="phone"
                     children={(field) => (
                         <div className="space-y-2">
-                            <Label htmlFor={field.name}>Phone</Label>
-                            <Input
+                            <Label htmlFor={field.name} className="text-[#E3E3E3]">Phone</Label>
+                            <PhoneInput
                                 id={field.name}
                                 name={field.name}
-                                type="tel"
                                 value={field.state.value || ""}
                                 onBlur={field.handleBlur}
-                                onChange={(e) => field.handleChange(e.target.value)}
-                                className="bg-[#131313] border-[#444] text-white"
+                                onChange={(value) => field.handleChange(value)}
+                                defaultCountry="US"
                             />
                         </div>
                     )}
@@ -145,14 +145,14 @@ const BetaForm = () => {
                         name="instagram"
                         children={(field) => (
                             <div className="space-y-2">
-                                <Label htmlFor={field.name}>Instagram</Label>
+                                <Label htmlFor={field.name} className="text-[#E3E3E3]">Instagram</Label>
                                 <Input
                                     id={field.name}
                                     name={field.name}
                                     value={field.state.value || ""}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
-                                    className="bg-[#131313] border-[#444] text-white"
+                                    className="bg-[#291F33] border-[#444] text-white"
                                     placeholder="@handle"
                                 />
                             </div>
@@ -162,14 +162,14 @@ const BetaForm = () => {
                         name="tiktok"
                         children={(field) => (
                             <div className="space-y-2">
-                                <Label htmlFor={field.name}>TikTok</Label>
+                                <Label htmlFor={field.name} className="text-[#E3E3E3]">TikTok</Label>
                                 <Input
                                     id={field.name}
                                     name={field.name}
                                     value={field.state.value || ""}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
-                                    className="bg-[#131313] border-[#444] text-white"
+                                    className="bg-[#291F33] border-[#444] text-white"
                                     placeholder="@handle"
                                 />
                             </div>
@@ -179,14 +179,14 @@ const BetaForm = () => {
                         name="x"
                         children={(field) => (
                             <div className="space-y-2">
-                                <Label htmlFor={field.name}>X "Twitter"</Label>
+                                <Label htmlFor={field.name} className="text-[#E3E3E3]">X "Twitter"</Label>
                                 <Input
                                     id={field.name}
                                     name={field.name}
                                     value={field.state.value || ""}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
-                                    className="bg-[#131313] border-[#444] text-white"
+                                    className="bg-[#291F33] border-[#444] text-white"
                                     placeholder="@handle"
                                 />
                             </div>
@@ -196,14 +196,14 @@ const BetaForm = () => {
                         name="twitch"
                         children={(field) => (
                             <div className="space-y-2">
-                                <Label htmlFor={field.name}>Twitch</Label>
+                                <Label htmlFor={field.name} className="text-[#E3E3E3]">Twitch</Label>
                                 <Input
                                     id={field.name}
                                     name={field.name}
                                     value={field.state.value || ""}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
-                                    className="bg-[#131313] border-[#444] text-white"
+                                    className="bg-[#291F33] border-[#444] text-white"
                                     placeholder="@handle"
                                 />
                             </div>
@@ -215,14 +215,14 @@ const BetaForm = () => {
                     name="comments"
                     children={(field) => (
                         <div className="space-y-2">
-                            <Label htmlFor={field.name}>Comments or Questions</Label>
+                            <Label htmlFor={field.name} className="text-[#E3E3E3]">Comments or Questions</Label>
                             <Textarea
                                 id={field.name}
                                 name={field.name}
                                 value={field.state.value || ""}
                                 onBlur={field.handleBlur}
                                 onChange={(e) => field.handleChange(e.target.value)}
-                                className="bg-[#131313] border-[#444] text-white min-h-[100px]"
+                                className="bg-[#291F33] border-[#444] text-white min-h-[100px]"
                             />
                         </div>
                     )}
@@ -238,7 +238,7 @@ const BetaForm = () => {
                                     checked={field.state.value}
                                     onCheckedChange={(checked) => field.handleChange(checked === true)}
                                 />
-                                <Label htmlFor={field.name} className="text-sm font-normal text-gray-300">
+                                <Label htmlFor={field.name} className="text-sm font-normal text-[#E3E3E3]">
                                     By clicking submit, you agree to be contacted by Co-Splay.
                                 </Label>
                             </div>

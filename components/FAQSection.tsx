@@ -97,7 +97,7 @@ const FAQSection: React.FC = () => {
                         Sign up for beta access
                     </h2>
                     <p className="text-lg text-gray-300 leading-relaxed">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Join our exclusive beta program and be among the first to experience the future of cosplay content creation.
+                        Apply here to get access as a beta creator! Contact our team and we will assist in getting your account verified and provide any additional information.
                     </p>
                     <Link
                         href="/beta"
