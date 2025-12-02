@@ -59,8 +59,8 @@ export default function Home() {
             headline="Easily manage your own content"
             tag="Creator Tools"
             subtext="Manage your page, sales, messages, and storefront from a single dashboard. Co-Splay’s tools are designed specifically for cosplay creators, with human support when you need it and a community that already shares your niche."
-            imageSrc="/dashboard-ipad.webp"
-            mobileImageSrc="/dashboard-ipad.webp" // Replace with mobile-specific image
+            imageSrc="/ipad_dashboard.webp"
+            mobileImageSrc="/ipad_dashboard.webp" // Replace with mobile-specific image
             imageAlt="Global Reach"
             orientation="left"
           />
