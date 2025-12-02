@@ -19,8 +19,8 @@ const formSchema = z.object({
     snapchat: z.string().optional(),
     onlyfans: z.string().optional(),
     comments: z.string().optional(),
-    privacyPolicy: z.literal(true, {
-        errorMap: () => ({ message: "You must agree to the privacy policy" }),
+    privacyPolicy: z.boolean().refine((val) => val === true, {
+        message: "You must agree to the privacy policy",
     }),
 });
 
