@@ -2,7 +2,7 @@
 
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
-import ReelSection from "@/components/ReelSection";
+import ReelSectionMore from "@/components/ReelSection-more";
 import Navbar from "@/components/Navbar";
 import ScrollAnimationSectionReel from "@/components/ScrollAnimationSection-Reel";
 import FAQSection from "@/components/FAQSection";
@@ -29,10 +29,10 @@ export default function Test() {
                     <div className="h-[70vh] w-full" />
 
                     <Section
-                        id="monetize"
-                        headline="Fund your next build"
-                        tag="Monetization"
-                        subtext="We give you the tools to earn from your fans through subscriptions, tips, and pay-per-view content. Turn this expensive hobby into a thriving career."
+                        id="discovery"
+                        headline="Reach a new audience"
+                        tag="Discovery"
+                        subtext="Co-Splay is built for discovery. Our Explore feed helps your content get discovered by users natively on the platform."
                         hideImage={true}
                         orientation="left"
                     />
@@ -41,16 +41,16 @@ export default function Test() {
                     <div className="h-[20vh] w-full" />
 
                     <Section
-                        id="discovery"
-                        headline="Reach a new audience"
-                        tag="Discovery"
-                        subtext="Co-Splay is built for discovery. Our Explore feed helps your content get discovered by users natively on the platform."
-                        imageSrc="/ipad_reels.webp"
-                        mobileImageSrc="/ipad_reels.webp" // Replace with mobile-specific image
+                        id="monetize"
+                        headline="Fund your next build"
+                        tag="Monetization"
+                        subtext="We give you the tools to earn from your fans through subscriptions, tips, and pay-per-view content. Turn this expensive hobby into a thriving career."
+                        imageSrc="/ipad_newpost2.webp"
+                        mobileImageSrc="/ipad_newpost2.webp" // Replace with mobile-specific image
                         imageAlt="Discovery"
                         orientation="right"
                     />
-                    <ReelSection id="protection" />
+                    <ReelSectionMore id="protection" />
 
                     <Section
                         headline="Easily manage your own content"

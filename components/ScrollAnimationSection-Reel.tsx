@@ -59,7 +59,7 @@ const ScrollAnimationSectionReel = () => {
             // Horizontal movement after initial animation (Duration: 1 -> 100-200vh)
             tl.to(
                 sharedContainerRef.current,
-                { x: "-55%", duration: 1, ease: "none" },
+                { x: "-95%", duration: 1, ease: "none" },
                 ">"
             );
             // Fade out as the section scrolls out of view

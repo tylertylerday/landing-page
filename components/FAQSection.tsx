@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Plus, Minus, ChevronDown, ChevronUp } from 'lucide-react';
+import Link from 'next/link';
+import { Plus, Minus, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 
 interface FAQItem {
     question: string;
@@ -10,24 +11,24 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
     {
-        question: "How does the DMCA takedown process work?",
-        answer: "Our automated system scans the web 24/7 for your content. When we find unauthorized copies, we automatically generate and submit DMCA takedown notices to the hosting providers and search engines to get the content removed."
+        question: "Does it cost anything to join?",
+        answer: "No. Creating a Co-Splay account is completely free!"
     },
     {
-        question: "What platforms do you monitor?",
-        answer: "We monitor major social media platforms, tube sites, file hosting services, and search engines. Our coverage is constantly expanding to ensure comprehensive protection for your content."
+        question: "What percentage of earnings does Co-Splay keep?",
+        answer: "Co-Splay takes 20% of creator profits to cover payment processing and other platform costs."
     },
     {
-        question: "Do I need to provide proof of ownership?",
-        answer: "Yes, during the initial setup, you'll need to verify your identity and ownership of the content. This is a one-time process to ensure we can legally act on your behalf."
+        question: "What kind of content is allowed on the platform?",
+        answer: "Co-Splay has a strict Safe-For-Work content policy. If you have more questions about our content policy, please contact us directly."
     },
     {
-        question: "How long does it take to remove content?",
-        answer: "Removal times vary by platform. Some major platforms remove content within hours, while others may take a few days. We track every submission and follow up until the content is gone."
+        question: "Can I sell both digital and physical merch on my page?",
+        answer: "Yes! You can sell photosets and other digital media, as well as physical merchandise in your shop."
     },
     {
-        question: "Can I whitelist certain sites or partners?",
-        answer: "Absolutely. You can easily add approved domains and partners to your whitelist so our system knows to ignore them during scans."
+        question: "Do I keep ownership of all the content I upload?",
+        answer: "Absolutely, you keep 100% ownership and rights to everything you create. Co-Splay will never claim ownership of your work."
     }
 ];
 
@@ -40,7 +41,7 @@ const FAQSection: React.FC = () => {
 
     return (
         <section className="w-full bg-[#2D1947] pt-20 pb-40">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 overflow-visible">
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Left Column - Heading */}
                     <div className="flex flex-col justify-start">
@@ -85,6 +86,26 @@ const FAQSection: React.FC = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+
+                {/* Divider Line */}
+                <div className="w-full h-px bg-[#ffffff1A] my-16"></div>
+
+                {/* Beta Signup Section */}
+                <div className="flex flex-col items-start text-left max-w-2xl gap-6 overflow-visible relative z-10">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white font-heading">
+                        Sign up for beta access
+                    </h2>
+                    <p className="text-lg text-gray-300 leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Join our exclusive beta program and be among the first to experience the future of cosplay content creation.
+                    </p>
+                    <Link
+                        href="/beta"
+                        className="group animate-border-button flex items-center text-xl justify-between w-full max-w-[250px] px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:bg-[#7d3ec9] transition-colors z--1"
+                    >
+                        Get Started
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                 </div>
             </div>
         </section>
