@@ -15,6 +15,21 @@ const ScrollAnimationSection = () => {
     const deviceRef = useRef<HTMLDivElement>(null);
     const sharedContainerRef = useRef<HTMLDivElement>(null);
 
+    React.useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const handleTimeUpdate = () => {
+            if (video.currentTime >= 3) {
+                video.currentTime = 0;
+                video.play();
+            }
+        };
+
+        video.addEventListener("timeupdate", handleTimeUpdate);
+        return () => video.removeEventListener("timeupdate", handleTimeUpdate);
+    }, []);
+
     useGSAP(
         () => {
             const tl = gsap.timeline({
@@ -100,7 +115,7 @@ const ScrollAnimationSection = () => {
                     >
                         <div className="relative w-full h-full">
                             <Image
-                                src="/ipad_newpost.webp"
+                                src="/ipad_newpost2.webp"
                                 alt="Device Frame"
                                 fill
                                 className="object-contain"

@@ -1,26 +1,26 @@
 @keyframes hero-gradient-animation {
     0% {
         --x-0: 20%;
-        --c-0: hsla(0, 0%, 0%, 1);
+        --c-0: rgb(54, 15, 66);
         --y-0: 55%;
         --s-start-0: 13%;
         --s-end-0: 67%;
         --y-1: 19%;
-        --c-1: hsla(317.7149055750353, 82%, 8%, 1);
+        --c-1: rgb(61, 13, 47);
         --s-start-1: 16%;
         --s-end-1: 58%;
         --x-1: 26%;
         --s-start-2: 2%;
         --s-end-2: 60%;
-        --c-2: hsla(302, 71%, 29%, 1);
+        --c-2: rgb(94, 14, 91);
         --x-2: 37%;
         --y-2: 0%;
-        --c-3: hsla(210, 53%, 5%, 1);
+        --c-3: rgb(53, 22, 68);
         --x-3: 38%;
         --s-start-3: 19%;
         --s-end-3: 85%;
         --y-3: 72%;
-        --c-4: hsla(317.0000000000001, 49%, 3%, 1);
+        --c-4: rgb(53, 16, 42);
         --s-start-4: 5%;
         --s-end-4: 61%;
         --x-4: 39%;
@@ -29,12 +29,12 @@
 
     100% {
         --x-0: 80%;
-        --c-0: hsla(0, 0%, 0%, 1);
+        --c-0: rgb(65, 16, 58);
         --y-0: 53%;
         --s-start-0: 15;
         --s-end-0: 60;
         --y-1: 35%;
-        --c-1: hsla(317.7075859160568, 87%, 3%, 1);
+        --c-1: rgb(75, 15, 57);
         --s-start-1: 15;
         --s-end-1: 60;
         --x-1: 66%;
@@ -43,12 +43,12 @@
         --c-2: hsla(277.94117647058823, 85%, 30%, 1);
         --x-2: 63%;
         --y-2: 85%;
-        --c-3: hsla(210, 53%, 5%, 1);
+        --c-3: rgb(64, 35, 112);
         --x-3: 92%;
         --s-start-3: 15;
         --s-end-3: 60;
         --y-3: 97%;
-        --c-4: hsla(317.0000000000001, 49%, 3%, 1);
+        --c-4: rgb(68, 21, 55);
         --s-start-4: 15;
         --s-end-4: 60;
         --x-4: 42%;
@@ -65,7 +65,7 @@
 @property --c-0 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(0, 0%, 0%, 1)
+    initial-value: rgb(53, 13, 88)
 }
 
 @property --y-0 {
@@ -95,7 +95,7 @@
 @property --c-1 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(317.7149055750353, 82%, 8%, 1)
+    initial-value: rgb(58, 7, 43)
 }
 
 @property --s-start-1 {
@@ -149,7 +149,7 @@
 @property --c-3 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(210, 53%, 5%, 1)
+    initial-value: rgb(48, 18, 61)
 }
 
 @property --x-3 {
@@ -179,7 +179,7 @@
 @property --c-4 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(317.0000000000001, 49%, 3%, 1)
+    initial-value: rgb(65, 23, 53)
 }
 
 @property --s-start-4 {
@@ -208,22 +208,22 @@
 
 .mesh-background {
     --x-0: 20%;
-    --c-0: hsla(0, 0%, 0%, 1);
+    --c-0: rgb(78, 15, 59);
     --y-0: 55%;
     --y-1: 19%;
-    --c-1: hsla(317.7149055750353, 82%, 8%, 1);
+    --c-1: rgb(65, 10, 48);
     --x-1: 26%;
     --c-2: rgb(68, 13, 66);
     --x-2: 37%;
     --y-2: 0%;
-    --c-3: hsla(210, 53%, 5%, 1);
+    --c-3: rgb(77, 29, 88);
     --x-3: 38%;
     --y-3: 72%;
-    --c-4: hsla(317.0000000000001, 49%, 3%, 1);
+    --c-4: rgb(63, 20, 51);
     --x-4: 39%;
     --y-4: 60%;
     ;
-    background-color: hsla(258.5147164101409, 70%, 15%, 1);
+    background-color: rgb(85, 26, 112);
     background-image: radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) var(--s-start-0), transparent var(--s-end-0)), radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) var(--s-start-1), transparent var(--s-end-1)), radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) var(--s-start-2), transparent var(--s-end-2)), radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) var(--s-start-3), transparent var(--s-end-3)), radial-gradient(circle at var(--x-4) var(--y-4), var(--c-4) var(--s-start-4), transparent var(--s-end-4));
     animation: hero-gradient-animation 10s linear infinite alternate;
     background-blend-mode: normal, normal, normal, normal, normal;

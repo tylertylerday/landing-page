@@ -21,7 +21,7 @@ const Navbar = () => {
                     className="flex items-center hover:opacity-80 transition-opacity"
                 >
                     <Image
-                        src="/logo-white.svg"
+                        src="/logo.svg"
                         alt="Co-Splay Logo"
                         width={120}
                         height={40}
