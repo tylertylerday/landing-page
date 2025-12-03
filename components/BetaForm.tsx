@@ -237,7 +237,9 @@ const BetaForm = () => {
                                     id={field.name}
                                     checked={field.state.value}
                                     onCheckedChange={(checked) => field.handleChange(checked === true)}
+                                    className="bg-[#291F33] border-[#444]"
                                 />
+
                                 <Label htmlFor={field.name} className="text-sm font-normal text-[#E3E3E3]">
                                     By clicking submit, you agree to be contacted by Co-Splay.
                                 </Label>
