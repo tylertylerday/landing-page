@@ -1,16 +1,24 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Menu } from "lucide-react";
+import {
+    Sheet,
+    SheetContent,
+    SheetTrigger,
+    SheetTitle,
+} from "@/components/ui/sheet";
 
 const Navbar = () => {
     const router = useRouter();
     const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleNavigation = (id: string) => {
+        setIsOpen(false); // Close mobile menu if open
         // If we're on the home page, just scroll
         if (pathname === "/") {
             const element = document.getElementById(id);
@@ -24,6 +32,7 @@ const Navbar = () => {
     };
 
     const handleLogoClick = () => {
+        setIsOpen(false);
         if (pathname === "/") {
             window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
@@ -62,36 +71,77 @@ const Navbar = () => {
                     />
                 </button>
 
-                {/* Navigation Links */}
+                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-8">
-                    <button
-                        onClick={() => handleNavigation("monetize")}
-                        className="text-gray-300 hover:text-[#9653ED] transition-colors font-medium"
-                    >
-                        Monetize
-                    </button>
-                    <button
-                        onClick={() => handleNavigation("discovery")}
-                        className="text-gray-300 hover:text-[#9653ED] transition-colors font-medium"
-                    >
-                        Discovery
-                    </button>
-                    <button
-                        onClick={() => handleNavigation("protection")}
-                        className="text-gray-300 hover:text-[#9653ED] transition-colors font-medium"
-                    >
-                        Protection
-                    </button>
+                    <NavLinks handleNavigation={handleNavigation} />
                 </div>
 
-                {/* CTA Button */}
-                <Link href="/beta" className="group flex items-center justify-between w-full max-w-[200px] px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:opacity-90 transition-opacity text-base">
-                    Join Waitlist
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                {/* Desktop CTA Button */}
+                <div className="hidden md:block">
+                    <Link href="/beta" className="group flex items-center justify-between w-full max-w-[200px] gap-2 px-3 py-2 bg-[#9653ED] text-white rounded-sm font-medium hover:opacity-90 transition-opacity text-base">
+                        Join Waitlist
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                </div>
+
+                {/* Mobile Menu */}
+                <div className="md:hidden">
+                    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                        <SheetTrigger asChild>
+                            <button className="text-white p-2">
+                                <Menu className="h-6 w-6" />
+                            </button>
+                        </SheetTrigger>
+                        <SheetContent side="right" className="bg-[#0A0A0A] border-l border-[#ffffff1A] w-[300px]">
+                            <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                            <div className="flex flex-col gap-8 mt-8">
+                                <div className="flex flex-col gap-4">
+                                    <NavLinks mobile handleNavigation={handleNavigation} />
+                                </div>
+                                <Link
+                                    href="/beta"
+                                    onClick={() => setIsOpen(false)}
+                                    className="group flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#9653ED] text-white rounded-sm font-medium hover:opacity-90 transition-opacity text-base"
+                                >
+                                    Join Waitlist
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
+                </div>
             </div>
         </nav>
     );
 };
+
+const NavLinks = ({
+    mobile = false,
+    handleNavigation
+}: {
+    mobile?: boolean;
+    handleNavigation: (id: string) => void;
+}) => (
+    <>
+        <button
+            onClick={() => handleNavigation("monetize")}
+            className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
+        >
+            Monetize
+        </button>
+        <button
+            onClick={() => handleNavigation("discovery")}
+            className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
+        >
+            Discovery
+        </button>
+        <button
+            onClick={() => handleNavigation("protection")}
+            className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
+        >
+            Protection
+        </button>
+    </>
+);
 
 export default Navbar;
