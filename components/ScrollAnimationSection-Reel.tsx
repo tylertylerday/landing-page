@@ -49,16 +49,28 @@ const ScrollAnimationSectionReel = () => {
                 "<"
             );
 
-            tl.fromTo(
-                sharedContainerRef.current,
-                { y: "55%" },
-                { y: "0%", duration: 1, ease: "power2.out" },
-                "<"
-            );
+            const mm = gsap.matchMedia();
+
+            mm.add("(max-width: 767px)", () => {
+                tl.fromTo(
+                    sharedContainerRef.current,
+                    { y: "65%" },
+                    { y: "0%", duration: 1, ease: "power2.out" },
+                    "<"
+                );
+            });
+
+            mm.add("(min-width: 768px)", () => {
+                tl.fromTo(
+                    sharedContainerRef.current,
+                    { y: "55%" },
+                    { y: "0%", duration: 1, ease: "power2.out" },
+                    "<"
+                );
+            });
 
             // Horizontal movement after initial animation (Duration: 1 -> 100-200vh)
             // Only apply on desktop (md and up)
-            const mm = gsap.matchMedia();
             mm.add("(min-width: 768px)", () => {
                 tl.to(
                     sharedContainerRef.current,
