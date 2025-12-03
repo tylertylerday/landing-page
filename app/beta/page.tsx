@@ -12,7 +12,7 @@ export default function BetaPage() {
                 <div className="relative">
                     <div className="container mx-auto px-4 py-32 flex flex-col items-center justify-center min-h-screen">
                         <div className="text-center mb-12 max-w-2xl">
-                            <h1 className="text-5xl font-bold mb-6 font-heading text-white">
+                            <h1 className="text-4xl med:text-5xl sm:text-3xl lg:text-7xl font-bold mb-6 font-heading text-white">
                                 Join the Beta
                             </h1>
                             <p className="text-xl text-gray-300">

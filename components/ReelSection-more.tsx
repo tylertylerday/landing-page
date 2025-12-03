@@ -9,9 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface ReelSectionProps {
     id?: string;
+    className?: string;
 }
 
-const ReelSection: React.FC<ReelSectionProps> = ({ id }) => {
+const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const leftReelRef = useRef<HTMLDivElement>(null);
     const left2ReelRef = useRef<HTMLDivElement>(null);
@@ -83,7 +84,7 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id }) => {
     );
 
     return (
-        <section id={id} ref={containerRef} className="relative w-full h-auto md:h-[150vh] z-20">
+        <section id={id} ref={containerRef} className={`relative w-full h-auto md:h-[150vh] z-20 mt-[10vh] md:mt-0 ${className}`}>
             <div className="relative md:sticky md:top-0 min-h-screen md:h-screen w-full overflow-hidden flex flex-col md:block items-center justify-center py-20 md:py-0">
 
                 {/* Content Container */}

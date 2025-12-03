@@ -57,21 +57,37 @@ const ScrollAnimationSectionReel = () => {
             );
 
             // Horizontal movement after initial animation (Duration: 1 -> 100-200vh)
-            tl.to(
-                sharedContainerRef.current,
-                { x: "-95%", duration: 1, ease: "none" },
-                ">"
-            );
-            // Fade out as the section scrolls out of view
-            gsap.to(sharedContainerRef.current, {
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "bottom bottom",
-                    end: "bottom 50%",
-                    scrub: true,
-                },
-                opacity: 0,
-                ease: "none",
+            // Only apply on desktop (md and up)
+            const mm = gsap.matchMedia();
+            mm.add("(min-width: 768px)", () => {
+                tl.to(
+                    sharedContainerRef.current,
+                    { x: "-95%", duration: 1, ease: "none" },
+                    ">"
+                );
+            });
+
+            // On mobile, fade out after initial animation
+            mm.add("(max-width: 767px)", () => {
+                tl.to(
+                    sharedContainerRef.current,
+                    { opacity: 0, duration: 1, ease: "power2.out" },
+                    ">"
+                );
+            });
+
+            // Fade out as the section scrolls out of view (desktop only)
+            mm.add("(min-width: 768px)", () => {
+                gsap.to(sharedContainerRef.current, {
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "bottom bottom",
+                        end: "bottom 50%",
+                        scrub: true,
+                    },
+                    opacity: 0,
+                    ease: "none",
+                });
             });
         },
         { scope: containerRef }
@@ -81,7 +97,7 @@ const ScrollAnimationSectionReel = () => {
         <div ref={containerRef} className="relative w-full h-[270vh] z-10">
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
                 {/* Shared container for video and device - sized to device dimensions */}
-                <div ref={sharedContainerRef} className="relative h-[min(80vh,90vw*1.78)] aspect-vert">
+                <div ref={sharedContainerRef} className="relative h-[min(60vh,85vw*1.78)] md:h-[min(80vh,90vw*1.78)] aspect-vert">
                     {/* Video container */}
                     <div ref={videoContainerRef} className="absolute overflow-hidden rounded-4xl inset-0 z-20 flex items-center justify-center">
                         <video

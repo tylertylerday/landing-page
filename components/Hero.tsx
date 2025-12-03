@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ headline, subtext, buttonText }) => {
   return (
     <section ref={heroRef} className="relative h-screen w-full bg-transparent text-white overflow-hidden">
       <div ref={contentRef} className="absolute top-[15vh] left-1/2 transform -translate-x-1/2 w-full max-w-[600px] px-4 text-center flex flex-col items-center gap-6">
-        <h1 className="text-5xl lg:text-7xl font-bold tracking-tight font-heading pb-8 border-b border-[#ffffff1A]">{headline}</h1>
+        <h1 className="text-4xl med:text-5xl sm:text-3xl lg:text-7xl font-bold tracking-tight font-heading pb-8 border-b border-[#ffffff1A]">{headline}</h1>
         <p className="text-lg text-gray-300">{subtext}</p>
         <Link
           href="/beta"
