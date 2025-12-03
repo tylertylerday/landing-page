@@ -94,7 +94,7 @@ const Navbar = () => {
                         </SheetTrigger>
                         <SheetContent side="right" className="bg-[#0A0A0A] border-l border-[#ffffff1A] w-[300px]">
                             <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
-                            <div className="flex flex-col gap-8 mt-8">
+                            <div className="flex flex-col p-8 gap-8 mt-8">
                                 <div className="flex flex-col gap-4">
                                     <NavLinks mobile handleNavigation={handleNavigation} />
                                 </div>
