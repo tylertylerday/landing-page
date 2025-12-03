@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "@tanstack/react-form";
-
+import Link from "next/link";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,6 +28,8 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const BetaForm = () => {
+    const [isSuccess, setIsSuccess] = useState(false);
+
     const form = useForm({
         defaultValues: {
             name: "",
@@ -59,7 +61,7 @@ const BetaForm = () => {
                     throw new Error(data.error || "Failed to submit");
                 }
 
-                alert("Thanks for your interest! We'll be in touch.");
+                setIsSuccess(true);
                 form.reset();
             } catch (error) {
                 console.error("Submission error:", error);
@@ -67,6 +69,51 @@ const BetaForm = () => {
             }
         },
     });
+
+    if (isSuccess) {
+        return (
+            <div className="w-full max-w-md mx-auto p-8 bg-[#160C24] rounded-xl border border-[#2D1947] text-center space-y-6">
+                <div className="w-16 h-16 bg-[#9653ED]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-8 w-8 text-[#9653ED]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                        />
+                    </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-white">Success!</h2>
+                <p className="text-[#E3E3E3]">
+                    Thanks for your interest in Co-Splay. We've received your information and will be in touch soon.
+                </p>
+                <div className="pt-4 border-t border-[#2D1947]">
+                    <p className="text-sm text-[#B0B0B0] mb-2">
+                        Have additional questions?
+                    </p>
+                    <a
+                        href="mailto:info@co-splay.com"
+                        className="text-[#c399fa] transition-colors hover:text-[#7a3bc9]"
+                    >
+                        info@co-splay.com
+                    </a>
+                </div>
+                <div className="pt-4">
+                    <Link href="/">
+                        <Button className="w-full bg-[#291F33] hover:bg-[#3a2e47] text-white border border-[#444]">
+                            Back to Homepage
+                        </Button>
+                    </Link>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="w-full max-w-md mx-auto p-6 bg-[#160C24] rounded-xl border border-[#2D1947]">
