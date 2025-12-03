@@ -4,9 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Plus, Minus, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 
+
 interface FAQItem {
     question: string;
     answer: string;
+}
+
+interface FAQSectionProps {
+    id?: string;
 }
 
 const faqs: FAQItem[] = [
@@ -32,7 +37,7 @@ const faqs: FAQItem[] = [
     }
 ];
 
-const FAQSection: React.FC = () => {
+const FAQSection: React.FC<FAQSectionProps> = ({ id }) => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggleFAQ = (index: number) => {
@@ -40,7 +45,7 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <section className="w-full bg-[#2D1947] pt-20 pb-40">
+        <section id={id} className="w-full bg-[#2D1947] pt-20 pb-40">
             <div className="container mx-auto px-4 overflow-visible">
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Left Column - Heading */}

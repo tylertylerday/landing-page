@@ -124,22 +124,34 @@ const NavLinks = ({
 }) => (
     <>
         <button
-            onClick={() => handleNavigation("monetize")}
-            className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
-        >
-            Monetize
-        </button>
-        <button
             onClick={() => handleNavigation("discovery")}
             className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
         >
             Discovery
         </button>
         <button
+            onClick={() => handleNavigation("monetize")}
+            className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
+        >
+            Monetize
+        </button>
+        <button
             onClick={() => handleNavigation("protection")}
             className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
         >
             Protection
+        </button>
+        <button
+            onClick={() => handleNavigation("creator-tools")}
+            className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
+        >
+            Creator Tools
+        </button>
+        <button
+            onClick={() => handleNavigation("faq")}
+            className={`text-gray-300 hover:text-[#9653ED] transition-colors font-medium ${mobile ? "text-lg py-2" : ""}`}
+        >
+            FAQ
         </button>
     </>
 );

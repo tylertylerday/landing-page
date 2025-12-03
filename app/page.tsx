@@ -53,6 +53,7 @@ export default function Test() {
                     <ReelSectionMore id="protection" />
 
                     <Section
+                        id="creator-tools"
                         headline="Easily manage your own content"
                         tag="Creator Tools"
                         subtext="Manage your page, sales, messages, and storefront from a single dashboard. Co-Splay’s tools are designed specifically for cosplay creators, with human support when you need it and a community that already shares your niche."
@@ -64,7 +65,7 @@ export default function Test() {
 
                     <div className="h-[10vh] w-full" />
 
-                    <FAQSection />
+                    <FAQSection id="faq" />
 
                 </div>
             </div>
