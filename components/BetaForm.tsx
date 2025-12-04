@@ -98,10 +98,10 @@ const BetaForm = () => {
                         Have additional questions?
                     </p>
                     <a
-                        href="mailto:info@co-splay.com"
+                        href="mailto:contact@co-splay.com"
                         className="text-[#c399fa] transition-colors hover:text-[#7a3bc9]"
                     >
-                        info@co-splay.com
+                        contact@co-splay.com
                     </a>
                 </div>
                 <div className="pt-4">
