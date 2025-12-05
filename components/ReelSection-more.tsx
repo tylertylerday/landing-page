@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -18,6 +18,49 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
     const left2ReelRef = useRef<HTMLDivElement>(null);
     const rightReelRef = useRef<HTMLDivElement>(null);
     const right2ReelRef = useRef<HTMLDivElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Check if mobile on mount and resize
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
+
+    // Set up Intersection Observer for scroll-into-view animation on mobile
+    useEffect(() => {
+        if (!isMobile || !containerRef.current || isVisible) {
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                    }
+                });
+            },
+            {
+                threshold: 0.2, // Trigger when 20% of the element is visible
+                rootMargin: '0px',
+            }
+        );
+
+        observer.observe(containerRef.current);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, [isMobile, isVisible]);
 
     useGSAP(
         () => {
@@ -96,7 +139,7 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
                         Your content, protected
                     </h2>
                     <p className="text-xl text-gray-300">
-                        Our automated DMCA takedown service protects your content from being stolen or reposted. If your content is leaked, we submit and process the takedown on your behalf.
+                        Our automated DMCA takedown service protects your content from being stolen or reposted. If your content is foud, we submit and process the takedown on your behalf
                     </p>
                 </div>
 
@@ -105,7 +148,10 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
                     {/* Left Reel */}
                     <div
                         ref={leftReelRef}
-                        className="relative md:absolute left-[0%] md:left-[5%] lg:left-[15%] xl:left-[20%] top-auto md:top-[10%] w-1/2 md:w-[256px] h-auto aspect-vert md:h-[456px] z-0"
+                        className={`relative md:absolute left-[0%] md:left-[5%] lg:left-[15%] xl:left-[20%] top-auto md:top-[10%] w-1/2 md:w-[256px] h-auto aspect-vert md:h-[456px] z-0 ${
+                            isMobile && isVisible ? 'animate__animated animate__fadeIn' : isMobile ? 'opacity-0' : ''
+                        }`}
+                        style={isMobile && isVisible ? { animationDelay: '0s' } : {}}
                     >
                         <div className="relative w-full h-full opacity-90 overflow-hidden rounded-2xl drop-shadow-xl">
                             <video
@@ -121,7 +167,10 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
                     {/* Left Reel 2 */}
                     <div
                         ref={left2ReelRef}
-                        className="relative md:absolute left-[0%] md:left-[5%] lg:left-[15%] xl:left-[20%] top-auto md:top-[10%] w-1/2 md:w-[342px] h-auto aspect-vert md:h-[608px] z-1 drop-shadow-2xl"
+                        className={`relative md:absolute left-[0%] md:left-[5%] lg:left-[15%] xl:left-[20%] top-auto md:top-[10%] w-1/2 md:w-[342px] h-auto aspect-vert md:h-[608px] z-1 drop-shadow-2xl ${
+                            isMobile && isVisible ? 'animate__animated animate__fadeIn' : isMobile ? 'opacity-0' : ''
+                        }`}
+                        style={isMobile && isVisible ? { animationDelay: '0.2s' } : {}}
                     >
                         <div className="relative w-full h-full overflow-hidden rounded-2xl">
                             <video
@@ -138,7 +187,10 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
                     {/* Right Reel */}
                     <div
                         ref={rightReelRef}
-                        className="relative md:absolute right-[0%] md:right-[5%] lg:right-[15%] xl:right-[20%] top-auto md:top-[30%] w-1/2 md:w-[256px] h-auto aspect-vert md:h-[456px] z-0"
+                        className={`relative md:absolute right-[0%] md:right-[5%] lg:right-[15%] xl:right-[20%] top-auto md:top-[30%] w-1/2 md:w-[256px] h-auto aspect-vert md:h-[456px] z-0 ${
+                            isMobile && isVisible ? 'animate__animated animate__fadeIn' : isMobile ? 'opacity-0' : ''
+                        }`}
+                        style={isMobile && isVisible ? { animationDelay: '0.4s' } : {}}
                     >
                         <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-2xl">
                             <video
@@ -154,7 +206,10 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
                     {/* Right Reel 2 */}
                     <div
                         ref={right2ReelRef}
-                        className="relative md:absolute right-[0%] md:right-[5%] lg:right-[15%] xl:right-[20%] top-auto md:top-[30%] w-1/2 md:w-[342px] h-auto aspect-vert md:h-[608px] z-1  drop-shadow-2xl"
+                        className={`relative md:absolute right-[0%] md:right-[5%] lg:right-[15%] xl:right-[20%] top-auto md:top-[30%] w-1/2 md:w-[342px] h-auto aspect-vert md:h-[608px] z-1  drop-shadow-2xl ${
+                            isMobile && isVisible ? 'animate__animated animate__fadeIn' : isMobile ? 'opacity-0' : ''
+                        }`}
+                        style={isMobile && isVisible ? { animationDelay: '0.6s' } : {}}
                     >
                         <div className="relative w-full h-full overflow-hidden rounded-2xl">
                             <video
