@@ -45,7 +45,7 @@ const Footer = () => {
                                 contact@co-splay.com
                             </Link>
                             <span className="text-gray-100">
-                                Phone: <Link href="tel:+4733378901" className="hover:text-[#9653ED] transition-colors">(555) 123-4567</Link>
+                                Phone: <Link href="tel:+4078080938" className="hover:text-[#9653ED] transition-colors">(407) 808-0938</Link>
                             </span>
                         </div>
                     </div>
