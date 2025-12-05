@@ -17,7 +17,7 @@ const formSchema = z.object({
     phone: z.string().optional(),
     instagram: z.string().optional(),
     tiktok: z.string().optional(),
-    x: z.string().optional(),
+    youtube: z.string().optional(),
     twitch: z.string().optional(),
     comments: z.string().optional(),
     privacyPolicy: z.boolean().refine((val) => val === true, {
@@ -37,7 +37,7 @@ const BetaForm = () => {
             phone: "",
             instagram: "",
             tiktok: "",
-            x: "",
+            youtube: "",
             twitch: "",
             comments: "",
             privacyPolicy: false,
@@ -223,10 +223,10 @@ const BetaForm = () => {
                         )}
                     />
                     <form.Field
-                        name="x"
+                        name="youtube"
                         children={(field) => (
                             <div className="space-y-2">
-                                <Label htmlFor={field.name} className="text-[#E3E3E3]">X "Twitter"</Label>
+                                <Label htmlFor={field.name} className="text-[#E3E3E3]">Youtube</Label>
                                 <Input
                                     id={field.name}
                                     name={field.name}

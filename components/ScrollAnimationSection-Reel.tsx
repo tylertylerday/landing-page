@@ -109,9 +109,9 @@ const ScrollAnimationSectionReel = () => {
         <div ref={containerRef} className="relative w-full h-[270vh] z-10">
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
                 {/* Shared container for video and device - sized to device dimensions */}
-                <div ref={sharedContainerRef} className="relative h-[min(60vh,85vw*1.78)] md:h-[min(80vh,90vw*1.78)] aspect-vert">
+                <div ref={sharedContainerRef} className="relative h-[min(60vh,85vw*1.78)] md:h-[min(80vh,90vw*1.78)] aspect-vert will-change-transform">
                     {/* Video container */}
-                    <div ref={videoContainerRef} className="absolute overflow-hidden rounded-4xl inset-0 z-20 flex items-center justify-center">
+                    <div ref={videoContainerRef} className="absolute overflow-hidden rounded-4xl inset-0 z-20 flex items-center justify-center will-change-transform">
                         <video
                             ref={videoRef}
                             className="w-full h-full object-cover shadow-2xl"
@@ -192,7 +192,7 @@ const ScrollAnimationSectionReel = () => {
                     {/* Device frame */}
                     <div
                         ref={deviceRef}
-                        className="absolute inset-0 z-10 pointer-events-none"
+                        className="absolute inset-0 z-10 pointer-events-none will-change-transform"
                     >
                         <div className="relative w-full h-full">
                             <Image

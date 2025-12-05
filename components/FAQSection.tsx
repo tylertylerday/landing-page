@@ -78,7 +78,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ id }) => {
                                     </span>
                                 </button>
                                 <div
-                                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-96 opacity-100 mb-6' : 'max-h-0 opacity-0'
+                                    className={`overflow-hidden transition-all duration-300 ease-in-out will-[max-height,opacity] ${openIndex === index ? 'max-h-96 opacity-100 mb-6' : 'max-h-0 opacity-0'
                                         }`}
                                 >
                                     <p className="text-[#E3E3E3] text-xl leading-7 px-4">

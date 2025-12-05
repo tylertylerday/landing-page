@@ -121,9 +121,9 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
                 <div
                     ref={imageRef}
                     className={`
-                        flex items-center justify-center h-[50vh] px-4 md:px-0 md:h-auto md:absolute md:top-0 md:bottom-0 md:h-full md:w-[50vw]
+                        flex items-center justify-center h-[50vh] px-4 md:px-0 md:absolute md:top-0 md:bottom-0 md:h-full md:w-[50vw]
                         ${orientation === 'left' ? 'md:right-1/2' : 'md:left-1/2'}
-                        z-0
+                        z-0 will-change-transform will-[opacity]
                     `}
                 >
                     <div className="relative w-full max-w-full h-full rounded-xl md:h-[62vh]">
@@ -162,7 +162,7 @@ const Section: React.FC<SectionProps> = ({ headline, subtext, id, tag, imageSrc,
             {/* Content Container - Centered and Aligned */}
             <div ref={contentRef} className={`
                 relative z-10 container mx-auto px-4 h-full flex flex-col justify-center min-h-[50vh]
-                ${orientation === 'left' ? 'md:items-end' : 'md:items-start'}
+                ${orientation === 'left' ? 'md:items-end' : 'md:items-start'} will-[opacity]
             `}>
                 <div ref={textRef} className="w-full md:w-1/2 flex flex-col gap-6 text-center md:text-left p-8 md:p-16">
                     {tag && (
