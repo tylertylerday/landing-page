@@ -63,7 +63,7 @@ const ScrollAnimationSectionReel = () => {
             mm.add("(min-width: 768px)", () => {
                 tl.fromTo(
                     sharedContainerRef.current,
-                    { y: "55%" },
+                    { y: "55vh" },
                     { y: "0%", duration: 1, ease: "power2.out" },
                     "<"
                 );
