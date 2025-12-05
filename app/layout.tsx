@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./mesh.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
       >
         <SmoothScroll />
         {children}
+        <Footer />
       </body>
     </html>
   );

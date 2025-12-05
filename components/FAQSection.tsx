@@ -53,9 +53,6 @@ const FAQSection: React.FC<FAQSectionProps> = ({ id }) => {
                         <h2 className="text-4xl md:text-5xl font-bold text-white font-heading mb-6">
                             FAQ
                         </h2>
-                        <p className="text-lg text-gray-300 max-w-md">
-                            Got questions? We've got answers. Here's everything you need to know about our protection services.
-                        </p>
                     </div>
 
                     {/* Right Column - Accordion Items */}
