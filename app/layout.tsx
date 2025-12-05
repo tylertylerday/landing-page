@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./mesh.css";
+import 'animate.css';
 import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
 import { GoogleAnalytics } from '@next/third-parties/google'

@@ -50,7 +50,7 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
                 });
             },
             {
-                threshold: 0.2, // Trigger when 20% of the element is visible
+                threshold: 0.5, // Trigger when 50% of the element is visible
                 rootMargin: '0px',
             }
         );
@@ -139,7 +139,7 @@ const ReelSection: React.FC<ReelSectionProps> = ({ id, className = '' }) => {
                         Your content, protected
                     </h2>
                     <p className="text-xl text-gray-300">
-                        Our automated DMCA takedown service protects your content from being stolen or reposted. If your content is foud, we submit and process the takedown on your behalf
+                        Our automated DMCA takedown service protects your content from being stolen or reposted. If your content is found on the web, we submit and process the takedown on your behalf.
                     </p>
                 </div>
 
