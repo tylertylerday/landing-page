@@ -72,9 +72,9 @@ const Navbar = () => {
                 </button>
 
                 {/* Desktop Navigation */}
-                {/* <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-8">
                     <NavLinks handleNavigation={handleNavigation} />
-                </div> */}
+                </div>
 
                 {/* Desktop CTA Button */}
                 <div className="hidden md:block">
