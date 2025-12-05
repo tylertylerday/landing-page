@@ -22,7 +22,7 @@ const Footer = () => {
                         <p className="text-[#E3E3E3] text-xl font-medium">
                             Turn your hobby into a career
                         </p>
-                        <div className="flex items-center gap-4">
+                        {/* <div className="flex items-center gap-4">
                             <Link href="#" className="p-2 bg-[#4F376F] rounded-full text-white hover:bg-[#9653ED] transition-colors">
                                 <Instagram className="w-5 h-5" />
                             </Link>
@@ -32,7 +32,7 @@ const Footer = () => {
                             <Link href="#" className="p-2 bg-[#4F376F] rounded-full text-white hover:bg-[#9653ED] transition-colors">
                                 <Facebook className="w-5 h-5" />
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Right Column */}
