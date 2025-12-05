@@ -5,6 +5,7 @@ import "./globals.css";
 import "./mesh.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,6 +55,7 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-8H78YJSMXK" />
     </html>
   );
 }
