@@ -24,6 +24,20 @@ const monsterFont = localFont({
 export const metadata: Metadata = {
   title: "Co-Splay",
   description: "A social media platform by cosplayers for cosplayers",
+  icons: {
+    icon: [
+      {
+        media: '(prefers-color-scheme: light)',
+        url: '/assets/favicons/light/favicon.ico',
+        href: '/assets/favicons/light/favicon.ico',
+      },
+      {
+        media: '(prefers-color-scheme: dark)',
+        url: '/assets/favicons/dark/favicon.ico',
+        href: '/assets/favicons/dark/favicon.ico',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

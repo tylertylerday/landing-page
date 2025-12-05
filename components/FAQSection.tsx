@@ -96,7 +96,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ id }) => {
                 {/* Beta Signup Section */}
                 <div className="flex flex-col items-start text-left max-w-2xl gap-6 overflow-visible relative z-10">
                     <h2 className="text-4xl md:text-5xl font-bold text-white font-heading">
-                        Sign up for beta access
+                        Sign up for early access
                     </h2>
                     <p className="text-lg text-gray-300 leading-relaxed">
                         Apply here to get access as a beta creator! Contact our team and we will assist in getting your account verified and provide any additional information.
