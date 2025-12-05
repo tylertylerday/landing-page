@@ -36,23 +36,27 @@ const Footer = () => {
                     </div>
 
                     {/* Right Column */}
-                    <div className="flex flex-col items-start gap-6">
+                    <div className="flex flex-col items-start gap-4">
                         <h4 className="text-white font-bold text-lg uppercase tracking-wider">
                             Get in touch
                         </h4>
-                        <div className="flex flex-col gap-4 text-[#E3E3E3]">
+                        <div className="flex flex-row md:flex-col gap-4 items-center md:items-start text-[#E3E3E3]">
                             <Link href="mailto:contact@co-splay.com" className="hover:text-[#9653ED] transition-colors">
                                 contact@co-splay.com
                             </Link>
-                            <span className="text-gray-100">
+                            <span className="hidden md:block text-gray-100">
                                 Phone: <Link href="tel:+4078080938" className="hover:text-[#9653ED] transition-colors">(407) 808-0938</Link>
+                            </span>
+                            <div className="md:hidden w-px h-4 bg-[#E3E3E3] opacity-50"></div>
+                            <span className="md:hidden text-gray-100">
+                                <Link href="tel:+4078080938" className="hover:text-[#9653ED] transition-colors">(407) 808-0938</Link>
                             </span>
                         </div>
                     </div>
                 </div>
 
                 {/* Divider and Copyright */}
-                <div className="border-t border-[#ffffff1A] pt-8 text-start text-sm text-gray-200">
+                <div className="border-t border-[#ffffff1A] pt-6 text-start text-sm text-gray-200">
                     &copy; {new Date().getFullYear()} Co-Splay. All rights reserved.
                 </div>
             </div>

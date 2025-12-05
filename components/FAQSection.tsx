@@ -45,7 +45,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ id }) => {
     };
 
     return (
-        <section id={id} className="w-full bg-[#2D1947] pt-20 pb-40">
+        <section id={id} className="w-full bg-[#2D1947] pt-20 pb-20 md:pb-40">
             <div className="container mx-auto px-4 overflow-visible">
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Left Column - Heading */}
@@ -99,7 +99,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ id }) => {
                         Sign up for early access
                     </h2>
                     <p className="text-lg text-gray-300 leading-relaxed">
-                        Apply here to get access as a beta creator! Contact our team and we will assist in getting your account verified and provide any additional information.
+                        Apply here to get early access as a creator! Contact our team and we will assist in getting your account verified and provide any additional information.
                     </p>
                     <Link
                         href="/beta"
