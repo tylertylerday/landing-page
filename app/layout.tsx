@@ -33,7 +33,7 @@ const metadataBase = process.env.NEXT_PUBLIC_SITE_URL
 export const metadata: Metadata = {
   metadataBase,
   title: "Co-Splay - The Premiere Cosplay Platform",
-  description: "Sign up for early access!",
+  description: "A social media and monetization platform for cosplayers and fans.",
   icons: {
     icon: [
       {
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Co-Splay",
-    description: "The Premiere Cosplay Platform",
+    title: "Co-Splay: The Premiere Cosplay Platfrom",
+    description: "A social media and monetization platform for cosplayers and fans.",
     type: "website",
     images: [
       {
@@ -63,8 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Co-Splay",
-    description: "The Premiere Cosplay Platform",
+    site: "@co-splay",
+    title: "Co-Splay: The Premiere Cosplay Platfrom",
+    description: "A social media and monetization platform for cosplayers and fans.",
     images: ['/assets/opengraph/TwitterOpengraph.jpg'],
   },
 };
