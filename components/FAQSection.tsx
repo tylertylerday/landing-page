@@ -20,8 +20,8 @@ const faqs: FAQItem[] = [
         answer: "No. Creating a Co-Splay account is completely free!"
     },
     {
-        question: "What percentage of earnings does Co-Splay keep?",
-        answer: "Co-Splay takes 20% of creator profits to cover payment processing and other platform costs."
+        question: "How do I get started?",
+        answer: "You can get started by submitting your information to join the waitlist as an early access creator! You can also reach out to us directly by email at creator@co-splay.com in order to find out more information."
     },
     {
         question: "What kind of content is allowed on the platform?",
