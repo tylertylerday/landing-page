@@ -23,9 +23,17 @@ const monsterFont = localFont({
   variable: "--font-monster",
 });
 
+// Get the base URL from environment variable or use a default
+const metadataBase = process.env.NEXT_PUBLIC_SITE_URL 
+  ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+  : process.env.VERCEL_URL
+  ? new URL(`https://${process.env.VERCEL_URL}`)
+  : new URL('https://co-splay.com'); // Fallback to production domain
+
 export const metadata: Metadata = {
-  title: "Co-Splay",
-  description: "A social media platform by cosplayers for cosplayers",
+  metadataBase,
+  title: "Co-Splay - The Premiere Cosplay Platform",
+  description: "Sign up for early access!",
   icons: {
     icon: [
       {
@@ -42,21 +50,21 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Co-Splay",
-    description: "A social media platform by cosplayers for cosplayers",
+    description: "The Premiere Cosplay Platform",
     type: "website",
     images: [
       {
         url: '/assets/opengraph/FacebookOpengraph.jpg',
         width: 1200,
         height: 630,
-        alt: "Co-Splay - A social media platform by cosplayers for cosplayers",
+        alt: "Co-Splay - The Premiere Cosplay Platform",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Co-Splay",
-    description: "A social media platform by cosplayers for cosplayers",
+    description: "The Premiere Cosplay Platform",
     images: ['/assets/opengraph/TwitterOpengraph.jpg'],
   },
 };
