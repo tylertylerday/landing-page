@@ -40,6 +40,25 @@ export const metadata: Metadata = {
       },
     ],
   },
+  openGraph: {
+    title: "Co-Splay",
+    description: "A social media platform by cosplayers for cosplayers",
+    type: "website",
+    images: [
+      {
+        url: '/assets/opengraph/FacebookOpengraph.jpg',
+        width: 1200,
+        height: 630,
+        alt: "Co-Splay - A social media platform by cosplayers for cosplayers",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Co-Splay",
+    description: "A social media platform by cosplayers for cosplayers",
+    images: ['/assets/opengraph/TwitterOpengraph.jpg'],
+  },
 };
 
 export default function RootLayout({
