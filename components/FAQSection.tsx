@@ -45,7 +45,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ id }) => {
     };
 
     return (
-        <section id={id} className="w-full bg-[#2D1947] pt-20 pb-20 md:pb-40">
+        <section id={id} className="w-full bg-[#2D1947] pt-32 md:pt-60 pb-20 md:pb-40 -mt-20 md:-mt-32">
             <div className="container mx-auto px-4 overflow-visible">
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Left Column - Heading */}

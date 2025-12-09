@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import ReelSectionMore from "@/components/ReelSection-more";
 import Navbar from "@/components/Navbar";
 import ScrollAnimationSectionReel from "@/components/ScrollAnimationSection-Reel";
+import ScheduleCallSection from "@/components/ScheduleCallSection";
 import FAQSection from "@/components/FAQSection";
 
 export default function Test() {
@@ -64,6 +65,8 @@ export default function Test() {
                     />
 
                     <div className="h-[10vh] w-full" />
+
+                    <ScheduleCallSection id="schedule-call" />
 
                     <FAQSection id="faq" />
 

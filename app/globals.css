@@ -87,6 +87,19 @@
   }
 }
 
+@keyframes meshPulse {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%, 50% 50%, 80% 20%, 20% 80%, 0% 0%;
+  }
+}
+
+.mesh-card-bg {
+  animation: meshPulse 8s ease-in-out infinite alternate;
+}
+
 :root {
   --radius: 0.625rem;
   --card: oklch(1 0 0);
