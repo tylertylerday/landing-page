@@ -50,17 +50,17 @@ const ScheduleCallSection: React.FC<ScheduleCallSectionProps> = ({
                     {/* Content */}
                     <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto gap-6 md:gap-8 px-6 md:px-12 py-12 md:py-20">
                         {/* Main Headline */}
-                        <h3 className="text-2xl md:text-4xl font-bold text-white font-heading">
+                        <h3 className="text-xl md:text-4xl font-bold text-white font-heading">
                             Being a creator is hard, <br /> we can help.
                         </h3>
 
                         {/* Body Text */}
-                        <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+                        <p className="text-med md:text-xl text-gray-300 leading-relaxed">
                             Co-Splay would love to help you get brand deals and sponsorships, organize creator collabs, increase your social reach, help with posting, and more!
                         </p>
 
                         {/* Call to Action */}
-                        <p className="text-xl md:text-2xl text-white font-medium">
+                        <p className="text-lg md:text-2xl text-white font-medium">
                             Schedule a call with one of our Talent Success Managers today!
                         </p>
 
