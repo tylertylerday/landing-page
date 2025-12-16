@@ -64,8 +64,9 @@ const BetaForm = () => {
                 setIsSuccess(true);
                 form.reset();
             } catch (error) {
-                console.error("Submission error:", error);
-                alert(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+                const errorMessage = error instanceof Error ? error.message : "Something went wrong. Please try again.";
+                console.error("Submission error:", errorMessage);
+                alert(errorMessage);
             }
         },
     });
