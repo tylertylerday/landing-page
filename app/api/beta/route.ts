@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Airtable from "airtable";
+import { google } from "googleapis";
 import { z } from "zod";
 
 const formSchema = z.object({
@@ -17,106 +17,74 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 /**
- * Helper function to sync contact to ActiveCampaign and add to list
+ * Helper function to write form data to Google Sheets
  */
-async function syncToActiveCampaign(data: FormData): Promise<void> {
-    const apiUrl = process.env.ACTIVECAMPAIGN_API_URL;
-    const apiToken = process.env.ACTIVECAMPAIGN_API_TOKEN;
-    const listId = process.env.ACTIVECAMPAIGN_LIST_ID;
+async function writeToGoogleSheets(data: FormData): Promise<void> {
+    const serviceAccountEmail = process.env.GOOGLE_SHEETS_SERVICE_ACCOUNT_EMAIL;
+    const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, "\n");
+    const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
+    const sheetName = process.env.GOOGLE_SHEETS_SHEET_NAME || "Sheet1";
 
-    if (!apiUrl || !apiToken || !listId) {
-        throw new Error("Missing ActiveCampaign configuration");
+    if (!serviceAccountEmail || !privateKey || !spreadsheetId) {
+        throw new Error("Missing Google Sheets configuration");
     }
 
-    // Split name into first and last name
-    const nameParts = data.name.trim().split(/\s+/);
-    const firstName = nameParts[0] || "";
-    const lastName = nameParts.slice(1).join(" ") || "";
+    // Log service account email in development for debugging
+    if (process.env.NODE_ENV === 'development') {
+        console.log("Using service account:", serviceAccountEmail);
+        console.log("Spreadsheet ID:", spreadsheetId);
+    }
 
-    // First, check if contact already exists by email
-    let contactId: string | undefined;
-    
-    const searchResponse = await fetch(`${apiUrl}/api/3/contacts?email=${encodeURIComponent(data.email)}`, {
-        method: "GET",
-        headers: {
-            "Api-Token": apiToken,
-            "Content-Type": "application/json",
+    // Authenticate with service account
+    const auth = new google.auth.GoogleAuth({
+        credentials: {
+            client_email: serviceAccountEmail,
+            private_key: privateKey,
         },
+        scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
-    if (searchResponse.ok) {
-        const searchResult = await searchResponse.json();
-        contactId = searchResult.contacts?.[0]?.id || searchResult.contact?.id;
-        
-        if (contactId && process.env.NODE_ENV === 'development') {
-            console.log(`Contact already exists with ID: ${contactId}, skipping creation`);
-        }
-    }
+    const sheets = google.sheets({ version: "v4", auth });
 
-    // Only create contact if it doesn't exist
-    if (!contactId) {
-        const contactData = {
-            contact: {
-                email: data.email,
-                firstName: firstName,
-                lastName: lastName,
-                phone: data.phone || "",
-            },
-        };
+    // Prepare row data with timestamp
+    const timestamp = new Date().toISOString();
+    const rowData = [
+        timestamp,
+        data.name,
+        data.email,
+        data.phone || "",
+        data.instagram || "",
+        data.tiktok || "",
+        data.youtube || "",
+        data.twitch || "",
+        data.comments || "",
+        data.privacyPolicy ? "Yes" : "No", // Privacy Policy agreement
+    ];
 
-        const contactResponse = await fetch(`${apiUrl}/api/3/contacts`, {
-            method: "POST",
-            headers: {
-                "Api-Token": apiToken,
-                "Content-Type": "application/json",
+    try {
+        // Append row to sheet
+        await sheets.spreadsheets.values.append({
+            spreadsheetId,
+            range: `${sheetName}!A:J`,
+            valueInputOption: "USER_ENTERED",
+            insertDataOption: "INSERT_ROWS",
+            requestBody: {
+                values: [rowData],
             },
-            body: JSON.stringify(contactData),
         });
-
-        if (!contactResponse.ok) {
-            const errorText = await contactResponse.text();
-            throw new Error(`ActiveCampaign contact creation failed: ${contactResponse.status} - ${errorText}`);
+    } catch (error: any) {
+        const errorMessage = error?.message || String(error);
+        // Provide more specific error messages
+        if (errorMessage.includes("Unable to parse range")) {
+            throw new Error(`Sheet "${sheetName}" not found. Please check the sheet name.`);
         }
-
-        const contactResult = await contactResponse.json();
-        
-        // Log the full response for debugging (only in development)
-        if (process.env.NODE_ENV === 'development') {
-            console.log("ActiveCampaign contact response:", JSON.stringify(contactResult, null, 2));
+        if (errorMessage.includes("PERMISSION_DENIED") || errorMessage.includes("403") || errorMessage.includes("does not have permission")) {
+            throw new Error(`Permission denied. Please share your Google Sheet with the service account email: ${serviceAccountEmail}. The service account needs "Editor" permissions.`);
         }
-        
-        // Try different possible response structures
-        contactId = contactResult.contact?.id || 
-                   contactResult.id || 
-                   (contactResult.contacts && contactResult.contacts[0]?.id);
-
-        if (!contactId) {
-            throw new Error(`ActiveCampaign did not return contact ID. Response structure: ${JSON.stringify(Object.keys(contactResult))}`);
+        if (errorMessage.includes("UNAUTHENTICATED") || errorMessage.includes("401")) {
+            throw new Error("Authentication failed. Please check your service account credentials.");
         }
-    }
-
-    // Add contact to list
-    const listResponse = await fetch(`${apiUrl}/api/3/contactLists`, {
-        method: "POST",
-        headers: {
-            "Api-Token": apiToken,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            contactList: {
-                list: listId,
-                contact: contactId,
-                status: 1, // Active status
-            },
-        }),
-    });
-
-    if (!listResponse.ok) {
-        const errorText = await listResponse.text();
-        // If contact is already in list, that's okay - don't throw error
-        if (listResponse.status !== 422) {
-            throw new Error(`ActiveCampaign list addition failed: ${listResponse.status} - ${errorText}`);
-        }
+        throw new Error(`Failed to write to Google Sheets: ${errorMessage}`);
     }
 }
 
@@ -125,78 +93,23 @@ export async function POST(request: Request) {
         const body = await request.json();
         const validatedData = formSchema.parse(body);
 
-        // Prepare both integration promises
-        const airtablePromise = (async () => {
-            const apiKey = process.env.AIRTABLE_ACCESS_TOKEN;
-            const baseId = process.env.AIRTABLE_BASE_ID;
-            const tableName = process.env.AIRTABLE_TABLE_NAME || "Beta Signups";
+        // Write to Google Sheets
+        await writeToGoogleSheets(validatedData);
 
-            if (!apiKey || !baseId) {
-                throw new Error("Missing Airtable configuration. API Key present: " + !!apiKey + ", Base ID present: " + !!baseId);
-            }
-
-            const base = new Airtable({ apiKey }).base(baseId);
-
-            await base(tableName).create([
-                {
-                    fields: {
-                        Name: validatedData.name,
-                        Email: validatedData.email,
-                        Phone: validatedData.phone,
-                        Instagram: validatedData.instagram,
-                        TikTok: validatedData.tiktok,
-                        Youtube: validatedData.youtube,
-                        Twitch: validatedData.twitch,
-                        Comments: validatedData.comments,
-                    },
-                },
-            ]);
-        })();
-
-        const activeCampaignPromise = syncToActiveCampaign(validatedData);
-
-        // Run both integrations in parallel
-        const results = await Promise.allSettled([airtablePromise, activeCampaignPromise]);
-
-        // Check results
-        const airtableResult = results[0];
-        const activeCampaignResult = results[1];
-
-        // Log any errors but don't fail the request if at least one succeeded
-        if (airtableResult.status === "rejected") {
-            const error = airtableResult.reason;
-            const errorMessage = error instanceof Error ? error.message : String(error);
-            console.error("Airtable submission error:", errorMessage);
-        }
-
-        if (activeCampaignResult.status === "rejected") {
-            const error = activeCampaignResult.reason;
-            const errorMessage = error instanceof Error ? error.message : String(error);
-            console.error("ActiveCampaign submission error:", errorMessage);
-        }
-
-        // Return success if at least one integration succeeded
-        if (airtableResult.status === "fulfilled" || activeCampaignResult.status === "fulfilled") {
-            return NextResponse.json({ success: true });
-        }
-
-        // If both failed, return error
-        const airtableError = airtableResult.status === "rejected" ? airtableResult.reason?.message || "Unknown error" : null;
-        const activeCampaignError = activeCampaignResult.status === "rejected" ? activeCampaignResult.reason?.message || "Unknown error" : null;
-
-        return NextResponse.json(
-            {
-                error: "Failed to submit form",
-                details: {
-                    airtable: airtableError,
-                    activeCampaign: activeCampaignError,
-                },
-            },
-            { status: 500 }
-        );
+        return NextResponse.json({ success: true });
     } catch (error: any) {
         const errorMessage = error instanceof Error ? error.message : String(error || "Failed to submit form");
-        console.error("Error processing form submission:", errorMessage);
+        
+        // Log detailed error for debugging (only in development)
+        if (process.env.NODE_ENV === 'development') {
+            console.error("Error processing form submission:", {
+                message: errorMessage,
+                error: error,
+            });
+        } else {
+            console.error("Error processing form submission:", errorMessage);
+        }
+        
         return NextResponse.json(
             { error: errorMessage },
             { status: 500 }

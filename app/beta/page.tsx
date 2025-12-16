@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import BetaForm from "@/components/BetaForm";
+import ScheduleCallSection from "@/components/ScheduleCallSection";
 
 export default function BetaPage() {
     return (
@@ -23,6 +24,8 @@ export default function BetaPage() {
 
                         <BetaForm />
                     </div>
+                    
+                    <ScheduleCallSection className="!mb-0 pb-20 md:pb-32" />
                 </div>
             </div>
         </main>

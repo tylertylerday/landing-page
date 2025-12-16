@@ -6,11 +6,13 @@ import { ArrowRight, Calendar } from 'lucide-react';
 interface ScheduleCallSectionProps {
     id?: string;
     calendlyUrl?: string;
+    className?: string;
 }
 
 const ScheduleCallSection: React.FC<ScheduleCallSectionProps> = ({ 
     id, 
-    calendlyUrl = "https://calendly.com/blake-croft-co-splay/30min" 
+    calendlyUrl = "https://calendly.com/blake-croft-co-splay/30min",
+    className = ""
 }) => {
     const handleScheduleClick = () => {
         if (calendlyUrl) {
@@ -19,7 +21,7 @@ const ScheduleCallSection: React.FC<ScheduleCallSectionProps> = ({
     };
 
     return (
-        <section id={id} className="w-full relative z-40 pb-0 -mb-20 md:-mb-32">
+        <section id={id} className={`w-full relative z-40 pb-0 -mb-20 md:-mb-32 ${className}`}>
             <div className="container mx-auto px-4 md:px-8">
                 {/* Floating Card */}
                 <div 
