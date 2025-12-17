@@ -57,6 +57,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   themeColor: '#ffffff',
   other: {
+    'google-site-verification': 'fMIdzb1X70sfBI2EMlOXs15tAJ6Y3h_v5rbCWoBkAAM',
     'msapplication-TileColor': '#ffffff',
     'msapplication-TileImage': '/ms-icon-144x144.png',
   },
