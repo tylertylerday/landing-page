@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -55,7 +55,6 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/manifest.json',
-  themeColor: '#ffffff',
   other: {
     'google-site-verification': 'fMIdzb1X70sfBI2EMlOXs15tAJ6Y3h_v5rbCWoBkAAM',
     'msapplication-TileColor': '#ffffff',
@@ -83,7 +82,9 @@ export const metadata: Metadata = {
   },
 };
 
-
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
+};
 
 export default function RootLayout({
   children,

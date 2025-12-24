@@ -10,7 +10,7 @@ export default function TermsOfServicePage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <div className="py-16 px-4">
+      <div className="py-24 px-4">
       <div className="max-w-[800px] mx-auto prose prose-lg text-white">
         <h1 className="text-4xl font-bold mb-4 text-white">TERMS OF SERVICE</h1>
         <p className="text-2xl font-semibold mb-2 text-white">Co-Splay</p>
