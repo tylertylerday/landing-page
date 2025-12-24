@@ -57,7 +57,17 @@ const Footer = () => {
 
                 {/* Divider and Copyright */}
                 <div className="border-t border-[#ffffff1A] pt-6 text-start text-sm text-gray-200">
-                    &copy; {new Date().getFullYear()} Co-Splay. All rights reserved.
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4">
+                        <span>&copy; {new Date().getFullYear()} Co-Splay. All rights reserved.</span>
+                        <div className="flex gap-4">
+                            <Link href="/terms" className="hover:text-[#9653ED] transition-colors">
+                                Terms of Service
+                            </Link>
+                            <Link href="/privacy" className="hover:text-[#9653ED] transition-colors">
+                                Privacy Policy
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
